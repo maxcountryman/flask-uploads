@@ -164,6 +164,14 @@ class TestPreconditions(object):
 
 
 class TestSaving(object):
+    def setup(self):
+        self.old_makedirs = os.makedirs
+        os.makedirs = lambda v: None
+    
+    def teardown(self):
+        os.makedirs = self.old_makedirs
+        del self.old_makedirs
+    
     def test_saved(self):
         uset = UploadSet('files')
         uset._config = Config('/uploads')
@@ -222,10 +230,14 @@ class TestConflictResolution(object):
         self.extant_files = []
         self.old_exists = os.path.exists
         os.path.exists = self.exists
+        self.old_makedirs = os.makedirs
+        os.makedirs = lambda v: None
     
     def teardown(self):
         os.path.exists = self.old_exists
         del self.extant_files, self.old_exists
+        os.makedirs = self.old_makedirs
+        del self.old_makedirs
     
     def extant(self, *files):
         self.extant_files.extend(files)

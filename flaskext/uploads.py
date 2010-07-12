@@ -336,6 +336,8 @@ class UploadSet(object):
             target_folder = os.path.join(self.config.destination, folder)
         else:
             target_folder = self.config.destination
+        if not os.path.exists(target_folder):
+            os.makedirs(target_folder)
         if os.path.exists(os.path.join(target_folder, basename)):
             basename = self.resolve_conflict(target_folder, basename)
         
