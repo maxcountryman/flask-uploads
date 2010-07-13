@@ -69,8 +69,11 @@ def extension(filename):
 
 
 def lowercase_ext(filename):
-    main, ext = filename.rsplit('.', 1)
-    return main + '.' + ext.lower()
+    if '.' in filename:
+        main, ext = filename.rsplit('.', 1)
+        return main + '.' + ext.lower()
+    else:
+        return filename.lower()
 
 
 def addslash(url):
@@ -300,6 +303,7 @@ class UploadSet(object):
         checks the extension, so you can override this if you want.
         
         :param storage: The `werkzeug.FileStorage` to check.
+        :param basename: The basename it will be saved under.
         """
         return self.extension_allowed(extension(basename))
     

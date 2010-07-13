@@ -153,7 +153,7 @@ class TestPreconditions(object):
         )
         for name, result in namepairs:
             tfs = TestingFileStorage(filename=name)
-            assert uset.file_allowed(tfs) is result
+            assert uset.file_allowed(tfs, name) is result
     
     def test_default_extensions(self):
         uset = UploadSet('files')
