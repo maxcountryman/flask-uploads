@@ -68,6 +68,11 @@ def extension(filename):
     return filename.rsplit('.', 1)[-1]
 
 
+def lowercase_ext(filename):
+    main, ext = filename.rsplit('.', 1)
+    return main + '.' + ext.lower()
+
+
 def addslash(url):
     if url.endswith('/'):
         return url
@@ -287,16 +292,16 @@ class UploadSet(object):
         dest = self.config.destination
         return os.path.join(dest, filename)
     
-    def file_allowed(self, storage):
+    def file_allowed(self, storage, basename):
         """
         This tells whether a file is allowed. It should return `True` if the
-        given `werkzeug.FileStorage` object can be saved, and `False` if it
-        can't. The default implementation just checks the extension, so you
-        can override this if you want.
+        given `werkzeug.FileStorage` object can be saved with the given
+        basename, and `False` if it can't. The default implementation just
+        checks the extension, so you can override this if you want.
         
         :param storage: The `werkzeug.FileStorage` to check.
         """
-        return self.extension_allowed(extension(storage.filename))
+        return self.extension_allowed(extension(basename))
     
     def extension_allowed(self, ext):
         """
@@ -323,14 +328,16 @@ class UploadSet(object):
         """
         if not isinstance(storage, FileStorage):
             raise TypeError("storage must be a werkzeug.FileStorage")
-        if not self.file_allowed(storage):
-            raise UploadNotAllowed()
-        basename = secure_filename(storage.filename)
+        
+        basename = lowercase_ext(secure_filename(storage.filename))
         if name:
             if name.endswith('.'):
                 basename = name + extension(basename)
             else:
                 basename = name
+        
+        if not self.file_allowed(storage, basename):
+            raise UploadNotAllowed()
         
         if folder:
             target_folder = os.path.join(self.config.destination, folder)
