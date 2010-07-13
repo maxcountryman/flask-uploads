@@ -1,0 +1,56 @@
+body {
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+}
+
+h1#title {
+    text-align: center;
+    font-size: 2em;
+}
+
+div#nav {
+    text-align: right;
+    width: 600px;
+    margin: auto;
+    font-size: smaller;
+}
+
+div#body {
+    width: 600px;
+    margin: 10px auto;
+    border: 2px solid #888;
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+
+div#footer {
+    text-align: center;
+    font-size: 0.9em;
+}
+
+div.flashes {
+    margin-top: -10px;
+    margin-left: -10px;
+    margin-right: -10px;
+    border-bottom: 2px solid #888;
+    padding: 10px;
+    background-color: #ddd;
+}
+
+.byline {
+    font-style: italic;
+}
+
+a {
+    color: #ccc;
+}
+
+div#body a {
+    color: #333;
+}
+
+p.image img {
+    max-width: 580px;
+}

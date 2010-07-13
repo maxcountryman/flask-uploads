@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}Index{% endblock title %}
+
+{% block body %}
+
+<h2>New Post</h2>
+
+<form action="{{ url_for('new') }}" method=POST enctype=multipart/form-data>
+
+<dl>
+
+<dt>Title
+    <dd><input type=text name=title>
+
+<dt>File
+    <dd><input type=file name=photo>
+
+<dt>Caption
+    <dd><textarea name=caption rows=5 cols=40></textarea>
+
+</dl>
+
+<p><input type=submit value=Post>
+
+</form>
+
+{% endblock body %}

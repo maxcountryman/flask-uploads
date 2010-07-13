@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<title>Photolog: {% block title %}Welcome{% endblock title %}</title>
+<link rel=stylesheet href="{{ url_for('static', filename='style.css') }}">
+
+<h1 id=title>Photolog</h1>
+
+<div id=nav>
+    <a href="{{ url_for('index') }}">Index</a> |
+    {% if g.logged_in -%}
+    <a href="{{ url_for('new') }}">New Post</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% else -%}
+    <a href="{{ url_for('login') }}">Login</a>
+    {% endif %}
+</div>
+
+<div id=body>
+    {% with flashes = get_flashed_messages() %}
+    {% if flashes %}
+    <div class=flashes>
+        <ul>
+            {% for f in flashes %}
+            <li>{{ f }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endwith %}
+    
+    {% block body %}
+    {% endblock body %}
+</div>
+
+<div id=footer>
+    Powered by Flask-Uploads
+</div>

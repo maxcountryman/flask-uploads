@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}Index{% endblock title %}
+
+{% block body %}
+
+{% for post in posts %}
+<h2>{{ post.title }}</h2>
+
+<p class=byline>{{ post.published.strftime("%A, %B %d %Y at %I:%M:%S %p") }}</p>
+
+<p class=image>
+    <a href="{{ post.imgsrc }}"><img src="{{ post.imgsrc }}"></a>
+</p>
+
+{% if post.caption -%}
+<p class=caption>{{ post.caption }}</p>
+{% endif %}
+
+{% else %}
+<p class=caption>No posts yet.</p>
+{% endfor %}
+
+{% endblock body %}
