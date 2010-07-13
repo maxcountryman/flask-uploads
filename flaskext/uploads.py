@@ -374,10 +374,10 @@ uploads_mod = Module(__name__, name='_uploads', url_prefix='/_uploads')
 
 @uploads_mod.route('/<setname>/<path:filename>')
 def uploaded_file(setname, filename):
-    config = app.upload_set_config.get(setname)
+    config = current_app.upload_set_config.get(setname)
     if config is None:
         abort(404)
-    send_from_directory(config.destination, filename)
+    return send_from_directory(config.destination, filename)
 
 
 class TestingFileStorage(FileStorage):
