@@ -19,12 +19,6 @@ from flaskext.uploads import (UploadSet, UploadConfiguration, extension,
 
 
 class TestMiscellaneous(object):
-    def test_patch_request_class(self):
-        app = Flask(__name__)
-        assert app.request_class.max_form_memory_size is None
-        patch_request_class(app)
-        assert app.request_class.max_form_memory_size == 16 * 1024 * 1024
-    
     def test_tfs(self):
         tfs = TestingFileStorage(filename='foo.bar')
         assert tfs.filename == 'foo.bar'

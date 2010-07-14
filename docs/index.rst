@@ -9,6 +9,10 @@ You can create different sets of uploads - one for document attachments, one
 for photos, etc. - and the application can be configured to save them all in
 different places and to generate different URLs for them.
 
+.. contents::
+   :local:
+   :backlinks: none
+
 
 Configuration
 =============
@@ -56,9 +60,9 @@ then they will be served internally by Flask. They are just there so if you
 have heavy upload traffic, you can have a faster production server like Nginx
 or Lighttpd serve the uploads.
 
-Also, if you are using Flask 0.6 or greater, the `MAX_CONTENT_LENGTH` setting
-may be useful. It will limit the max size of uploaded form data, including
-files. This functionality is not available in Flask 0.5.1.
+If you are running Flask 0.6 or greater, or the application uses
+``patch_request_class(app, None)``, then you can set `MAX_CONTENT_LENGTH` to
+limit the size of uploaded files.
 
 
 Upload Sets
@@ -113,7 +117,20 @@ You pass in the app and all of the upload sets you want configured. Calling
 
     configure_uploads(app, (photos, media))
 
-If your app has a factory function, that is a good place to place this call.
+If your app has a factory function, that is a good place to call this
+function.
+
+By default, though, Flask doesn't put any limits on the size of the uploaded
+data. To protect your application, you can use `patch_request_class`. If you
+call it with `None` as the second parameter, it will use the
+`MAX_CONTENT_LENGTH` setting to determine how large the upload can be. ::
+
+    patch_request_class(app, None)
+
+You can also call it with a number to set an absolute limit, but that only
+exists for backwards compatibility reasons and is not recommended for
+production use. In addition, it's not necessary for Flask 0.6 or greater, so
+if your application is only intended to run on Flask 0.6, you don't need it.
 
 
 File Upload Forms
@@ -134,9 +151,9 @@ The field itself should be an ``<input type=file>``.
     </form>
 
 
-API
-===
-Here are the API docs. These are generated directly from the source code.
+API Documentation
+=================
+This documentation is generated directly from the source code.
 
 
 Upload Sets
@@ -150,6 +167,8 @@ Upload Sets
 Application Setup
 -----------------
 .. autofunction:: configure_uploads
+
+.. autofunction:: patch_request_class
 
 
 Extension Constants
@@ -185,6 +204,10 @@ Testing Utilities
 .. autoclass:: TestingFileStorage
 
 
-Deprecated API
---------------
-.. autofunction:: patch_request_class
+Backwards Compatibility
+=======================
+
+Version 0.1.1
+-------------
+* `patch_request_class` now changes `max_content_length` instead of
+  `max_form_memory_size`.
