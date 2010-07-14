@@ -84,6 +84,15 @@ def addslash(url):
 
 def patch_request_class(app, size=16 * 1024 * 1024):
     """
+    .. warning::
+    
+       This function is deprecated as of 0.1.1. As it turns out, Werkzeug
+       will automatically switch to a temporary file if the file is larger
+       than 500 KiB, so this function is unnecessary for its intended purpose.
+       If you wish to limit upload size, Flask 0.6's `MAX_CONTENT_LENGTH`
+       configuration setting is a better choice. This function is preserved
+       for backwards compatibility.
+    
     By default, Flask will accept uploads to an arbitrary size. Unfortunately,
     this could lead to a security hole: someone uploads a gigantic file, and
     crashes your server when it runs out of memory. Calling this on an
