@@ -9,7 +9,7 @@ Links
 `````
 * `documentation <http://packages.python.org/Flask-Uploads>`_
 * `development version
-  <http://bitbucket.org/leafstorm/flask-uploads/get/tip.gz#egg=Flask-Uploads-dev`_
+  <http://bitbucket.org/leafstorm/flask-uploads/get/tip.gz#egg=Flask-Uploads-dev>`_
 
 
 """
