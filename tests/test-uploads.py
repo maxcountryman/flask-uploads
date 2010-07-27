@@ -11,6 +11,7 @@ will pass.
 :copyright: 2010 Matthew "LeafStorm" Frazier
 :license:   MIT/X11, see LICENSE for details
 """
+from __future__ import with_statement
 import os.path
 from flask import Flask, url_for
 from flaskext.uploads import (UploadSet, UploadConfiguration, extension,
