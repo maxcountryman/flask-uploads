@@ -351,10 +351,16 @@ class UploadSet(object):
         :param storage: The uploaded file to save.
         :param folder: The subfolder within the upload set to save to.
         :param name: The name to save the file as. If it ends with a dot, the
-                     file's extension will be appended to the end.
+                     file's extension will be appended to the end. (If you
+                     are using `name`, you can include the folder in the
+                     `name` instead of explicitly using `folder`, i.e.
+                     ``uset.save(file, name="someguy/photo_123.")``
         """
         if not isinstance(storage, FileStorage):
             raise TypeError("storage must be a werkzeug.FileStorage")
+        
+        if folder is None and name is not None and "/" in name:
+            folder, name = name.rsplit("/", 1)
         
         basename = lowercase_ext(secure_filename(storage.filename))
         if name:

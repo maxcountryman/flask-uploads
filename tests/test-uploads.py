@@ -207,6 +207,14 @@ class TestSaving(object):
         assert res == 'someguy/photo_123.jpg'
         assert tfs.saved == '/uploads/someguy/photo_123.jpg'
     
+    def test_implicit_folder(self):
+        uset = UploadSet('files')
+        uset._config = Config('/uploads')
+        tfs = TestingFileStorage(filename='boat.jpg')
+        res = uset.save(tfs, name='someguy/photo_123.')
+        assert res == 'someguy/photo_123.jpg'
+        assert tfs.saved == '/uploads/someguy/photo_123.jpg'
+    
     def test_secured_filename(self):
         uset = UploadSet('files', ALL)
         uset._config = Config('/uploads')
