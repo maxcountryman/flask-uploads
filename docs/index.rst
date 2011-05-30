@@ -38,7 +38,7 @@ the name of the set (i.e. `PHOTOS`, `ATTACHMENTS`):
 `UPLOADED_FILES_DENY`
     This lets you deny file extensions allowed by the upload set in the code.
 
-However, to save on configuration time, there are two settings you can provide
+To save on configuration time, there are two settings you can provide
 that apply as "defaults" if you don't provide the proper settings otherwise.
 
 `UPLOADS_DEFAULT_DEST`

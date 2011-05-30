@@ -294,3 +294,4 @@ class TestPathsAndURLs(object):
         with app.test_request_context():
             url = uset.url('foo.txt')
             assert url == 'http://localhost:5001/foo.txt'
+        assert '_uploads' not in app.modules
