@@ -164,15 +164,14 @@ def configure_uploads(app, upload_sets):
     """
     Call this after the app has been configured. It will go through all the
     upload sets, get their configuration, and store the configuration on the
-    app. It will also register the uploads module if it hasn't been set.
+    app. It will also register the uploads module if it hasn't been set. This
+    can be called multiple times with different upload sets.
     
     :param app: The `~flask.Flask` instance to get the configuration from.
     :param upload_sets: The `UploadSet` instances to configure.
     """
     if isinstance(upload_sets, UploadSet):
         upload_sets = (upload_sets,)
-    if '_uploads' not in app.modules:
-        app.register_module(uploads_mod)
     
     if not hasattr(app, 'upload_set_config'):
         app.upload_set_config = {}
@@ -183,6 +182,10 @@ def configure_uploads(app, upload_sets):
     for uset in upload_sets:
         config = config_for_set(uset, app, defaults)
         set_config[uset.name] = config
+    
+    should_serve = any(s.base_url is None for s in set_config.itervalues())
+    if '_uploads' not in app.modules and should_serve:
+        app.register_module(uploads_mod)
 
 
 class All(object):

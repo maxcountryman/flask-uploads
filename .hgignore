@@ -5,3 +5,4 @@ syntax: glob
 docs/_build/*
 *egg-info*
 dist/*
+env/*
