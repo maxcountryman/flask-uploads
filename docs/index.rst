@@ -206,6 +206,11 @@ Testing Utilities
 
 Backwards Compatibility
 =======================
+Version 0.1.2
+-------------
+* The `_uploads` module/blueprint will not be registered if it is not needed
+  to serve uploads.
+
 
 Version 0.1.1
 -------------

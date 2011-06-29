@@ -13,6 +13,13 @@ import posixpath
 from flask import current_app, Module, send_from_directory, abort, url_for
 from itertools import chain
 from werkzeug import secure_filename, FileStorage
+try:
+    from flask import Blueprint
+except ImportError:
+    from flask import Module
+    using_blueprints = False
+else:
+    using_blueprints = True
 
 # Extension presets
 
@@ -167,6 +174,10 @@ def configure_uploads(app, upload_sets):
     app. It will also register the uploads module if it hasn't been set. This
     can be called multiple times with different upload sets.
     
+    .. versionchanged:: 0.1.2
+       The uploads module/blueprint will only be registered if it is needed
+       to serve the upload sets.
+    
     :param app: The `~flask.Flask` instance to get the configuration from.
     :param upload_sets: The `UploadSet` instances to configure.
     """
@@ -184,8 +195,12 @@ def configure_uploads(app, upload_sets):
         set_config[uset.name] = config
     
     should_serve = any(s.base_url is None for s in set_config.itervalues())
-    if '_uploads' not in app.modules and should_serve:
-        app.register_module(uploads_mod)
+    if using_blueprints:
+        if '_uploads' not in app.blueprints and should_serve:
+            app.register_blueprint(uploads_mod)
+    else:
+        if '_uploads' not in app.modules and should_serve:
+            app.register_module(uploads_mod)
 
 
 class All(object):
@@ -410,7 +425,10 @@ class UploadSet(object):
                 return newname
 
 
-uploads_mod = Module(__name__, name='_uploads', url_prefix='/_uploads')
+if using_blueprints:
+    uploads_mod = Blueprint('_uploads', __name__, url_prefix='/_uploads')
+else:
+    uploads_mod = Module(__name__, name='_uploads', url_prefix='/_uploads')
 
 @uploads_mod.route('/<setname>/<path:filename>')
 def uploaded_file(setname, filename):
