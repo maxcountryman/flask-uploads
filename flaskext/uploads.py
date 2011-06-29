@@ -174,7 +174,7 @@ def configure_uploads(app, upload_sets):
     app. It will also register the uploads module if it hasn't been set. This
     can be called multiple times with different upload sets.
     
-    .. versionchanged:: 0.1.2
+    .. versionchanged:: 0.1.3
        The uploads module/blueprint will only be registered if it is needed
        to serve the upload sets.
     
