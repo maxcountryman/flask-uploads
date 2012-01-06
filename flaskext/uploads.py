@@ -323,15 +323,20 @@ class UploadSet(object):
         else:
             return base + filename
     
-    def path(self, filename):
+    def path(self, filename, folder=None):
         """
         This returns the absolute path of a file uploaded to this set. It
         doesn't actually check whether said file exists.
         
         :param filename: The filename to return the path for.
+        :param folder: The subfolder within the upload set previously used 
+                       to save to.
         """
-        dest = self.config.destination
-        return os.path.join(dest, filename)
+        if folder:
+            target_folder = os.path.join(self.config.destination, folder)
+        else:
+            target_folder = self.config.destination
+        return os.path.join(target_folder, filename)
     
     def file_allowed(self, storage, basename):
         """
