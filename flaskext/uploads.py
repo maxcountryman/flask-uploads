@@ -72,13 +72,17 @@ def tuple_from(*iters):
 
 
 def extension(filename):
-    return filename.rsplit('.', 1)[-1]
+    ext = os.path.splitext(filename)[1]
+    if ext.startswith('.'):
+        # os.path.splitext retains . separator
+        ext = ext[1:]
+    return ext
 
 
 def lowercase_ext(filename):
     if '.' in filename:
-        main, ext = filename.rsplit('.', 1)
-        return main + '.' + ext.lower()
+        main, ext = os.path.splitext(filename)
+        return main + ext.lower()
     else:
         return filename.lower()
 
@@ -380,7 +384,7 @@ class UploadSet(object):
             raise TypeError("storage must be a werkzeug.FileStorage")
 
         if folder is None and name is not None and "/" in name:
-            folder, name = name.rsplit("/", 1)
+            folder, name = os.path.split(name)
 
         basename = lowercase_ext(secure_filename(storage.filename))
         if name:
@@ -421,11 +425,11 @@ class UploadSet(object):
         :param target_folder: The absolute path to the target.
         :param basename: The file's original basename.
         """
-        name, ext = basename.rsplit('.', 1)
+        name, ext = os.path.splitext(basename)
         count = 0
         while True:
             count = count + 1
-            newname = '%s_%d.%s' % (name, count, ext)
+            newname = '%s_%d%s' % (name, count, ext)
             if not os.path.exists(os.path.join(target_folder, newname)):
                 return newname
 

@@ -30,7 +30,7 @@ class TestMiscellaneous(object):
 
     def test_extension(self):
         assert extension('foo.txt') == 'txt'
-        assert extension('foo') == 'foo'
+        assert extension('foo') == ''
         assert extension('archive.tar.gz') == 'gz'
         assert extension('audio.m4a') == 'm4a'
 
