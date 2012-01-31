@@ -56,11 +56,11 @@ class Post(Document):
     filename = TextField()
     caption = TextField()
     published = DateTimeField(default=datetime.datetime.utcnow)
-    
+
     @property
     def imgsrc(self):
         return uploaded_photos.url(self.filename)
-    
+
     all = ViewField('photolog', '''\
         function (doc) {
             if (doc.doc_type == 'post')
