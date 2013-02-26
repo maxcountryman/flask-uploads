@@ -381,7 +381,7 @@ class UploadSet(object):
                 (ext in self.extensions and ext not in self.config.deny))
 
     def get_basename(self, filename):
-        return lowercase_ext(secure_filename(storage.filename))
+        return lowercase_ext(secure_filename(filename))
 
     def save(self, storage, folder=None, name=None):
         """
