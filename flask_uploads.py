@@ -380,6 +380,9 @@ class UploadSet(object):
         return ((ext in self.config.allow) or
                 (ext in self.extensions and ext not in self.config.deny))
 
+    def get_basename(self, filename):
+        return lowercase_ext(secure_filename(storage.filename))
+
     def save(self, storage, folder=None, name=None):
         """
         This saves a `werkzeug.FileStorage` into this upload set. If the
@@ -401,7 +404,7 @@ class UploadSet(object):
         if folder is None and name is not None and "/" in name:
             folder, name = os.path.split(name)
 
-        basename = lowercase_ext(secure_filename(storage.filename))
+        basename = self.get_basename(storage.filename)
         if name:
             if name.endswith('.'):
                 basename = name + extension(basename)
