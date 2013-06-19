@@ -8,18 +8,24 @@ an `UploadSet` object and upload your files to it.
 :copyright: 2010 Matthew "LeafStorm" Frazier
 :license:   MIT/X11, see LICENSE for details
 """
+
+import sys
+
+PY3 = sys.version_info[0] == 3
+
+if PY3:
+    string_types = str,
+else:
+    string_types = basestring,
+
 import os.path
 import posixpath
+
 from flask import current_app, Module, send_from_directory, abort, url_for
 from itertools import chain
 from werkzeug import secure_filename, FileStorage
-try:
-    from flask import Blueprint
-except ImportError:
-    from flask import Module
-    using_blueprints = False
-else:
-    using_blueprints = True
+
+from flask import Blueprint
 
 # Extension presets
 
@@ -211,13 +217,9 @@ def configure_uploads(app, upload_sets):
         config = config_for_set(uset, app, defaults)
         set_config[uset.name] = config
 
-    should_serve = any(s.base_url is None for s in set_config.itervalues())
-    if using_blueprints:
-        if '_uploads' not in app.blueprints and should_serve:
-            app.register_blueprint(uploads_mod)
-    else:
-        if '_uploads' not in app.modules and should_serve:
-            app.register_module(uploads_mod)
+    should_serve = any(s.base_url is None for s in set_config.values())
+    if '_uploads' not in app.blueprints and should_serve:
+        app.register_blueprint(uploads_mod)
 
 
 class All(object):
@@ -447,10 +449,8 @@ class UploadSet(object):
                 return newname
 
 
-if using_blueprints:
-    uploads_mod = Blueprint('_uploads', __name__, url_prefix='/_uploads')
-else:
-    uploads_mod = Module(__name__, name='_uploads', url_prefix='/_uploads')
+uploads_mod = Blueprint('_uploads', __name__, url_prefix='/_uploads')
+
 
 @uploads_mod.route('/<setname>/<path:filename>')
 def uploaded_file(setname, filename):
@@ -494,7 +494,7 @@ class TestingFileStorage(FileStorage):
         :param dst: The file to save to.
         :param buffer_size: Ignored.
         """
-        if isinstance(dst, basestring):
+        if isinstance(dst, string_types):
             self.saved = dst
         else:
             self.saved = dst.name

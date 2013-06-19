@@ -29,7 +29,7 @@ setup(
     zip_safe=False,
     platforms='any',
     install_requires=[
-        'Flask>=0.10.1'
+        'Flask>=0.8.0'
     ],
     tests_require='nose',
     test_suite='nose.collector',

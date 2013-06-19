@@ -6,3 +6,4 @@ docs/_build/*
 *egg-info*
 dist/*
 env/*
+.tox
