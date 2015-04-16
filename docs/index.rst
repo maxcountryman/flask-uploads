@@ -99,7 +99,7 @@ the instance directory's ``uploads`` folder - you can pass a ``default_dest``
 callable to the set constructor. It takes the application as its argument.
 For example::
 
-    media = UploadSet('media', default_dest=lambda app: app.instance_root)
+    media = UploadSet('media', default_dest=lambda app: app.instance_path)
 
 This won't prevent a different destination from being set in the config,
 though. It's just to save your users a little configuration time.
