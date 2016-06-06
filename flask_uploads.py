@@ -21,7 +21,7 @@ else:
 import os.path
 import posixpath
 
-from flask import current_app, Module, send_from_directory, abort, url_for
+from flask import current_app, send_from_directory, abort, url_for
 from itertools import chain
 from werkzeug import secure_filename, FileStorage
 
