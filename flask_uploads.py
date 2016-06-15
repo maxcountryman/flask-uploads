@@ -58,11 +58,24 @@ SCRIPTS = tuple('js php pl py rb sh'.split())
 ARCHIVES = tuple('gz bz2 zip tar tgz txz 7z'.split())
 
 #: This contains nonexecutable source files - those which need to be
-#: compiled to binaries to be used. They are generally safe to accept,
-#: as without an existing RCE vulnerability, they cannot be compiled
-#: or executed. (C, C++, Java, Rust, Ada, FORTRAN, D)
-SOURCE = tuple('c cpp c++ h hpp h++ cxx hxx hdl ada f for f90 f95 f03 d java'
-        .split())
+#: compiled or assembled to binaries to be used. They are generally safe to 
+#: accept, as without an existing RCE vulnerability, they cannot be compiled,
+#: assembled, linked, or executed. Supports C, C++, Ada, Rust, Go (Golang),
+#: FORTRAN, D, Java, C Sharp, F Sharp (compiled only), COBOL, Haskell, and 
+#: assembly.
+SOURCE = tuple(('c cpp c++ h hpp h++ cxx hxx hdl ' # C/C++
+        + 'ada ' # Ada
+        + 'rs ' # Rust
+        + 'go ' # Go
+        + 'f for f90 f95 f03 ' # FORTRAN
+        + 'd dd di ' # D
+        + 'java ' # Java
+        + 'hs ' # Haskell
+        + 'cs ' # C Sharp
+        + 'fs ' # F Sharp compiled source (NOT .fsx, which is interactive-ready)
+        + 'cbl cob ' # COBOL
+        + 'asm s ' # Assembly
+        ).split())
 
 #: This contains shared libraries and executable files (.so, .exe and .dll).
 #: Most of the time, you will not want to allow this - it's better suited for
