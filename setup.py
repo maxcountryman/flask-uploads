@@ -7,9 +7,9 @@ separately.
 
 Links
 `````
-* `documentation <http://packages.python.org/Flask-Uploads>`_
+* `documentation <http://flask-uploads.readthedocs.io/en/latest/>`_
 * `development version
-  <http://bitbucket.org/leafstorm/flask-uploads/get/tip.gz#egg=Flask-Uploads-dev>`_
+  <https://github.com/maxcountryman/flask-uploads>`_
 
 
 """
@@ -18,8 +18,8 @@ from setuptools import setup
 
 setup(
     name='Flask-Uploads',
-    version='0.2.0',
-    url='http://bitbucket.org/leafstorm/flask-uploads/',
+    version='0.2.1',
+    url='https://github.com/maxcountryman/flask-uploads',
     license='MIT',
     author='Matthew "LeafStorm" Frazier',
     author_email='leafstormrush@gmail.com',
