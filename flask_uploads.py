@@ -39,7 +39,7 @@ DOCUMENTS = tuple('rtf odf ods gnumeric abw doc docx xls xlsx'.split())
 
 #: This contains basic image types that are viewable from most browsers (.jpg,
 #: .jpe, .jpeg, .png, .gif, .svg, and .bmp).
-IMAGES = tuple('jpg jpe jpeg png gif svg bmp'.split())
+IMAGES = tuple('jpg jpe jpeg png gif svg bmp webp'.split())
 
 #: This contains audio file types (.wav, .mp3, .aac, .ogg, .oga, and .flac).
 AUDIO = tuple('wav mp3 aac ogg oga flac'.split())
