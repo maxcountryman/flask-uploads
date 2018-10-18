@@ -160,6 +160,15 @@ class TestPreconditions(object):
             tfs = TestingFileStorage(filename=name)
             assert uset.file_allowed(tfs, name) is result
 
+    def test_non_ascii_filename(self):
+        uset = UploadSet('files')
+        uset._config = Config('/uploads')
+        tfs = TestingFileStorage(filename=u'天安门.jpg')
+        res = uset.save(tfs)
+        assert res == 'jpg'
+        res = uset.save(tfs, name='secret.')
+        assert res == 'secret.jpg'
+
     def test_default_extensions(self):
         uset = UploadSet('files')
         uset._config = Config('/uploads')
