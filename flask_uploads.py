@@ -33,7 +33,7 @@ from flask import Blueprint
 TEXT = ('txt',)
 
 #: This contains various office document formats (.rtf, .odf, .ods, .gnumeric,
-#: .abw, .doc, .docx, .xls, and .xlsx). Note that the macro-enabled versions
+#: .abw, .doc, .docx, .xls, .xlsx and .pdf). Note that the macro-enabled versions
 #: of Microsoft Office 2007 files are not included.
 DOCUMENTS = tuple('rtf odf ods gnumeric abw doc docx xls xlsx pdf'.split())
 
