@@ -18,7 +18,7 @@ from setuptools import setup
 
 setup(
     name='Flask-Uploads',
-    version='0.2.2',
+    version='0.2.dev',
     url='https://github.com/maxcountryman/flask-uploads',
     license='MIT',
     author='Matthew "LeafStorm" Frazier',
