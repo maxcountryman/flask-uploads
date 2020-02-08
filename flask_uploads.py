@@ -23,7 +23,12 @@ import posixpath
 
 from flask import current_app, send_from_directory, abort, url_for
 from itertools import chain
-from werkzeug import secure_filename, FileStorage
+
+try:
+  from werkzeug import secure_filename, FileStorage # for werkzeug v0.16.1 and earlier
+except ImportError:
+  from werkzeug.utils import secure_filename # for werkzeug v1.0.0
+  from werkzeug.datastructures import FileStorage # for werkzeug v1.0.0
 
 from flask import Blueprint
 
