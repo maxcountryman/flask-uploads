@@ -406,14 +406,17 @@ class UploadSet(object):
             folder, name = os.path.split(name)
 
         basename = self.get_basename(storage.filename)
+        
+        if not self.file_allowed(storage, basename):
+            raise UploadNotAllowed()
+        
         if name:
             if name.endswith('.'):
                 basename = name + extension(basename)
             else:
                 basename = name
 
-        if not self.file_allowed(storage, basename):
-            raise UploadNotAllowed()
+
 
         if folder:
             target_folder = os.path.join(self.config.destination, folder)
