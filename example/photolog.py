@@ -9,9 +9,9 @@ import datetime
 import uuid
 from flask import (Flask, request, url_for, redirect, render_template, flash,
                    session, g)
-from flaskext.couchdb import (CouchDBManager, Document, TextField,
+from flask.ext.couchdb import (CouchDBManager, Document, TextField,
                               DateTimeField, ViewField)
-from flaskext.uploads import (UploadSet, configure_uploads, IMAGES,
+from flask.ext.uploads import (UploadSet, configure_uploads, IMAGES,
                               UploadNotAllowed)
 
 # defaults
