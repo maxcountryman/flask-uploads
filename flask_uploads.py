@@ -100,6 +100,9 @@ def tuple_from(*iters):
 
 def extension(filename):
     ext = os.path.splitext(filename)[1]
+    if ext == '':
+        # add non-ascii filename support
+        ext = os.path.splitext(filename)[0]
     if ext.startswith('.'):
         # os.path.splitext retains . separator
         ext = ext[1:]
