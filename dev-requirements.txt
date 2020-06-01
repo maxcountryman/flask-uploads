@@ -1,0 +1,6 @@
+flake8>=3.7.0
+pytest>=4.0.0
+pytest-cov>=2.6.0
+tox>=2.0
+bumpversion>=0.5.3
+-e .
