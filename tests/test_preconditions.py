@@ -1,4 +1,5 @@
-from flask_storage import UploadSet, UploadConfiguration
+from flask_storage import UploadSet
+from flask_storage.upload_configuration import UploadConfiguration
 
 
 def test_filenames(file_storage_cls):

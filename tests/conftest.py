@@ -3,7 +3,8 @@ from unittest import mock
 
 import pytest
 from flask import Flask
-from flask_storage import UploadSet, UploadConfiguration, configure_uploads
+from flask_storage import UploadSet, Storage
+from flask_storage.upload_configuration import UploadConfiguration
 from werkzeug.datastructures import FileStorage
 
 
@@ -23,7 +24,9 @@ def app_defaults(app):
     )
 
     files, photos = UploadSet("files"), UploadSet("photos")
-    configure_uploads(app, (files, photos,))
+
+    storage = Storage(files, photos)
+    storage.init_app(app)
 
     yield app
 
@@ -36,7 +39,9 @@ def app_default_serve(app):
     app.config.update({"UPLOADS_DEFAULT_DEST": "/var/uploads"})
 
     files, photos = UploadSet("files"), UploadSet("photos")
-    configure_uploads(app, (files, photos,))
+
+    storage = Storage(files, photos)
+    storage.init_app(app)
 
     yield app
 
@@ -56,7 +61,9 @@ def app_mixed_defaults(app):
     )
 
     files, photos = UploadSet("files"), UploadSet("photos")
-    configure_uploads(app, (files, photos,))
+
+    storage = Storage(files, photos)
+    storage.init_app(app)
 
     yield app
 
@@ -78,7 +85,9 @@ def app_callable_default_dest(app):
 
     files = UploadSet("files", default_dest=lambda app: os.path.join(app.config["CUSTOM"], "files"))
     photos = UploadSet("photos")
-    configure_uploads(app, (files, photos,))
+
+    storage = Storage(files, photos)
+    storage.init_app(app)
 
     yield app
 
@@ -100,7 +109,9 @@ def app_manual(app):
     )
 
     files, photos = UploadSet("files"), UploadSet("photos")
-    configure_uploads(app, (files, photos,))
+
+    storage = Storage(files, photos)
+    storage.init_app(app)
 
     yield app
 
@@ -115,7 +126,9 @@ def app_serve(app):
     app.config.update({"UPLOADED_FILES_DEST": "/var/files", "UPLOADED_PHOTOS_DEST": "/mnt/photos"})
 
     files, photos = UploadSet("files"), UploadSet("photos")
-    configure_uploads(app, (files, photos,))
+
+    storage = Storage(files, photos)
+    storage.init_app(app)
 
     yield app
 

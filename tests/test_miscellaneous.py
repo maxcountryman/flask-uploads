@@ -1,10 +1,5 @@
-from flask_storage import (
-    extension,
-    lowercase_ext,
-    addslash,
-    ALL,
-    AllExcept,
-)
+from flask_storage.extensions import ALL, AllExcept
+from flask_storage.utils import extension, lowercase_ext, addslash
 
 
 def test_tfs(file_storage_cls):
