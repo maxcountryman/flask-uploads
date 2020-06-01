@@ -5,5 +5,5 @@ Flask-Uploads provides file uploads for Flask.
 ## Installation
 
 ```sh
-pip install flask-uploads
+pip install git+https://github.com/svidela/flask-uploads.git
 ```
