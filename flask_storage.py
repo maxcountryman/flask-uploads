@@ -1,17 +1,6 @@
 # -*- coding: utf-8 -*-
-"""
-flaskext.uploads
-================
-This module provides upload support for Flask. The basic pattern is to set up
-an `UploadSet` object and upload your files to it.
-
-:copyright: 2010 Matthew "LeafStorm" Frazier
-:license:   MIT/X11, see LICENSE for details
-"""
-
 import os
 import posixpath
-import itertools
 
 from flask import current_app, send_from_directory, abort, url_for
 from flask import Blueprint
@@ -88,10 +77,6 @@ class UploadNotAllowed(Exception):
     """
 
 
-def tuple_from(*iters):
-    return tuple(itertools.chain(*iters))
-
-
 def extension(filename):
     main, ext = os.path.splitext(filename)
     if ext.startswith("."):
@@ -106,10 +91,6 @@ def lowercase_ext(filename):
     This is a helper used by UploadSet.save to provide lowercase extensions for
     all processed files, to compare with configured extensions in the same
     case.
-
-    .. versionchanged:: 0.1.4
-       Filenames without extensions are no longer lowercased, only the
-       extension is returned in lowercase, if an extension exists.
 
     :param filename: The filename to ensure has a lowercase extension.
     """
@@ -147,8 +128,6 @@ def patch_request_class(app, size=64 * 1024 * 1024):
        you can pass `None` as the size (you must pass it explicitly). That is
        the best way to call this function, as it won't break the Flask 0.6
        functionality if it exists.
-
-    .. versionchanged:: 0.1.1
 
     :param app: The app to patch the request class of.
     :param size: The maximum size to accept, in bytes. The default is 64 MiB.
@@ -211,10 +190,6 @@ def configure_uploads(app, upload_sets):
     upload sets, get their configuration, and store the configuration on the
     app. It will also register the uploads module if it hasn't been set. This
     can be called multiple times with different upload sets.
-
-    .. versionchanged:: 0.1.3
-       The uploads module/blueprint will only be registered if it is needed
-       to serve the upload sets.
 
     :param app: The `~flask.Flask` instance to get the configuration from.
     :param upload_sets: The `UploadSet` instances to configure.

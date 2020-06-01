@@ -1,4 +1,4 @@
-from flask_uploads import UploadSet, UploadConfiguration
+from flask_storage import UploadSet, UploadConfiguration
 
 
 def test_path():

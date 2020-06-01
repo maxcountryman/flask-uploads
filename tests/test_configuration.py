@@ -1,4 +1,4 @@
-from flask_uploads import UploadConfiguration
+from flask_storage import UploadConfiguration
 
 
 def test_manual(app_manual):

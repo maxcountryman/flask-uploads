@@ -1,5 +1,5 @@
 import os
-from flask_uploads import UploadSet, UploadConfiguration, ALL
+from flask_storage import UploadSet, UploadConfiguration, ALL
 
 
 def test_saved(file_storage_cls, tmp_uploadset):

@@ -1,4 +1,4 @@
-from flask_uploads import (
+from flask_storage import (
     extension,
     lowercase_ext,
     addslash,

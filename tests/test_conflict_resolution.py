@@ -1,6 +1,6 @@
 import pathlib
 
-from flask_uploads import UploadConfiguration, UploadSet
+from flask_storage import UploadConfiguration, UploadSet
 
 
 def test_conflict(file_storage_cls, tmp_uploadset):

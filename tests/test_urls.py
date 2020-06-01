@@ -1,4 +1,4 @@
-from flask_uploads import UploadSet, url_for
+from flask_storage import UploadSet, url_for
 
 
 def test_url_generated(app_serve):

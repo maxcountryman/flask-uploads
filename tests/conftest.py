@@ -3,7 +3,7 @@ from unittest import mock
 
 import pytest
 from flask import Flask
-from flask_uploads import UploadSet, UploadConfiguration, configure_uploads
+from flask_storage import UploadSet, UploadConfiguration, configure_uploads
 from werkzeug.datastructures import FileStorage
 
 

@@ -1,2 +1,7 @@
-include tests/*.py
-include LICENSE
+include *.rst LICENSE
+
+graft docs
+prun docs/_build
+
+graft test
+include dev-requirements.txt tox.ini
