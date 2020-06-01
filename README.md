@@ -10,4 +10,4 @@ pip install git+https://github.com/svidela/flask-storage.git
 
 ## About
 
-This is a fork of [Flask-Uploads](https://github.com/maxcountryman/flask-uploads)
+This is a fork of [Flask-Uploads](https://github.com/maxcountryman/flask-uploads). Apart from various refactors it will add support for Google Cloud Storage and maybe other providers as well.
