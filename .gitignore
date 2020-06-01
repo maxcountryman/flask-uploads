@@ -1,0 +1,6 @@
+.tox
+.coverage
+.vscode
+*.egg-info
+.python-version
+__pycache__
