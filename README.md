@@ -5,7 +5,7 @@ Flask-Storage provides file uploads for [Flask](https://palletsprojects.com/p/fl
 ## Installation
 
 ```sh
-pip install git+https://github.com/svidela/flask-uploads.git
+pip install git+https://github.com/svidela/flask-storage.git
 ```
 
 ## About
