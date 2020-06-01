@@ -1,5 +1,6 @@
 .tox
 .coverage
+coverage.xml
 .vscode
 *.egg-info
 .python-version
