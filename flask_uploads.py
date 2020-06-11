@@ -33,6 +33,10 @@ from flask import Blueprint
 #: This just contains plain text files (.txt).
 TEXT = ('txt',)
 
+#: This contains basic video types.
+#: ('mp4, mov')
+VIDEOS = tuple('mov mp4'.split())
+
 #: This contains various office document formats (.rtf, .odf, .ods, .gnumeric,
 #: .abw, .doc, .docx, .xls, .xlsx and .pdf). Note that the macro-enabled versions
 #: of Microsoft Office 2007 files are not included.
