@@ -37,7 +37,7 @@ setup(
     py_modules=["flask_uploads"],
     zip_safe=False,
     platforms="any",
-    install_requires=["Flask>=0.8.0"],
+    install_requires=["Flask>=1.0.4"],
     python_requires=">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*",
     classifiers=[
         "Development Status :: 4 - Beta",
