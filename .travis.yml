@@ -1,0 +1,18 @@
+language: python
+
+python:
+  - "2.7"
+  - "pypy"
+  - "3.5"
+  - "3.6"
+  - "3.7"
+  - "3.8"
+
+cache:
+  - pip
+
+install:
+  - pip install -U pip tox tox-travis
+
+script:
+  - tox
