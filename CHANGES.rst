@@ -4,6 +4,8 @@ Changelog
 unreleased
 ----------
 
+- update `setup.py`
+  (`#12 <https://github.com/jugmac00/flask-uploads/issues/12>`_)
 - start using pre-commit.com
   (`#4 <https://github.com/jugmac00/flask-uploads/issues/4>`_)
 - update README

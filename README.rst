@@ -14,8 +14,7 @@ on the 0.2.1 version of the original.
 Goals
 -----
 
-- `Flask-Reuploaded` will be a stable drop-in replacement for
-`Flask-Uploads`
+- `Flask-Reuploaded` is a stable drop-in replacement for `Flask-Uploads`
 - regain momentum for this widely used package
 - provide working PyPi packages
 
