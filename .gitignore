@@ -3,7 +3,10 @@
 .tox
 *.egg-info/
 htmlcov/
-
+venv-wheel/
+venv-sdist/
+build/
+dist/
 
 # ide
 .vscode/

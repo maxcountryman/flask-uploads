@@ -1,8 +1,12 @@
 Changelog
 =========
 
-unreleased
-----------
+0.3
+---
+
+Besides including four years of unreleased changes from the original
+package, most notable the fix for the Werkzeug API change, the
+following changes happened since forking the original package.
 
 - rename package from `Flask-Uploads` to `Flask-Reuploaded`
   (`#10 <https://github.com/jugmac00/flask-reuploaded/issues/10>`_)
