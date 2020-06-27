@@ -1,0 +1,12 @@
+# test and packaging
+.coverage
+.tox
+*.egg-info/
+htmlcov/
+
+
+# ide
+.vscode/
+
+# general
+*.pyc
