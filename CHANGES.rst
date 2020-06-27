@@ -4,6 +4,8 @@ Changelog
 unreleased
 ----------
 
+- update README
+  (`#14 <https://github.com/jugmac00/flask-uploads/issues/14>`_)
 - setup CI (Travis)
   (`#3 <https://github.com/jugmac00/flask-uploads/issues/3>`_)
 - fix broken tests
