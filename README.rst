@@ -8,7 +8,10 @@ Notes on this package
 ---------------------
 
 This is an independently maintained version of `Flask-Uploads` based
-on the 0.2.1 version of the original.
+on the 0.2.1 version of the original, but also including four years of
+unreleased changes - at least not released to PyPi.
+
+Noteworthy is the fix for the `Werkzeug` API change.
 
 
 Goals
