@@ -26,7 +26,7 @@ Contributing
 ------------
 
 Contributions are more than welcome. Please have a look at
-https://github.com/jugmac00/flask-uploads/issues
+https://github.com/jugmac00/flask-reuploaded/issues
 
 
 Installation

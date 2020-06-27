@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-tests/test-uploads.py
-=====================
-This is a Nose testing file for Flask-Uploads.
-
-NOTE: While Flask-Uploads will probably work on Windows, all the filenames in
-this testing file are in the POSIX style. So, no guarantees that the tests
-will pass.
-
 :copyright: 2010 Matthew "LeafStorm" Frazier
 :license:   MIT/X11, see LICENSE for details
 """

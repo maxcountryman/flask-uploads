@@ -4,17 +4,19 @@ Changelog
 unreleased
 ----------
 
+- rename package from `Flask-Uploads` to `Flask-Reuploaded`
+  (`#10 <https://github.com/jugmac00/flask-reuploaded/issues/10>`_)
 - update `setup.py`
-  (`#12 <https://github.com/jugmac00/flask-uploads/issues/12>`_)
+  (`#12 <https://github.com/jugmac00/flask-reuploaded/issues/12>`_)
 - start using pre-commit.com
-  (`#4 <https://github.com/jugmac00/flask-uploads/issues/4>`_)
+  (`#4 <https://github.com/jugmac00/flask-reuploaded/issues/4>`_)
 - update README
-  (`#14 <https://github.com/jugmac00/flask-uploads/issues/14>`_)
+  (`#14 <https://github.com/jugmac00/flask-reuploaded/issues/14>`_)
 - setup CI (Travis)
-  (`#3 <https://github.com/jugmac00/flask-uploads/issues/3>`_)
+  (`#3 <https://github.com/jugmac00/flask-reuploaded/issues/3>`_)
 - fix broken tests
-  (`#13 <https://github.com/jugmac00/flask-uploads/issues/13>`_)
+  (`#13 <https://github.com/jugmac00/flask-reuploaded/issues/13>`_)
 - make use of `pytest` instead of the no longer maintained `nose`
-  (`#2 <https://github.com/jugmac00/flask-uploads/issues/2>`_)
+  (`#2 <https://github.com/jugmac00/flask-reuploaded/issues/2>`_)
 - add a changelog and start tracking changes
-  (`#1 <https://github.com/jugmac00/flask-uploads/issues/1>`_)
+  (`#1 <https://github.com/jugmac00/flask-reuploaded/issues/1>`_)

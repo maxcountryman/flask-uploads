@@ -282,7 +282,7 @@ class UploadConfiguration(object):
 
     :param destination: The directory to save files to.
     :param base_url: The URL (ending with a /) that files can be downloaded
-                     from. If this is `None`, Flask-Uploads will serve the
+                     from. If this is `None`, Flask-Reuploaded will serve the
                      files itself.
     :param allow: A list of extensions to allow, even if they're not in the
                   `UploadSet` extensions list.

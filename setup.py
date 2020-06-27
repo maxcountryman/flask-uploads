@@ -26,7 +26,7 @@ LONG = read("README.rst") + "\n\n" + read("CHANGES.rst")
 setup(
     name="Flask-Reuploaded",
     version="0.3.dev0",
-    url="https://github.com/jugmac00/flask-uploads",
+    url="https://github.com/jugmac00/flask-reuploaded",
     license="MIT",
     author='Matthew "LeafStorm" Frazier',
     author_email="leafstormrush@gmail.com",
