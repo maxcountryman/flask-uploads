@@ -12,11 +12,15 @@ will pass.
 :license:   MIT/X11, see LICENSE for details
 """
 from __future__ import with_statement
+
 import os.path
+
 from flask import Flask, url_for
-from flask_uploads import (UploadSet, UploadConfiguration, extension,
-    lowercase_ext, TestingFileStorage, patch_request_class, configure_uploads,
-    addslash, ALL, AllExcept)
+
+from flask_uploads import (ALL, AllExcept, TestingFileStorage,
+                           UploadConfiguration, UploadSet, addslash,
+                           configure_uploads, extension, lowercase_ext,
+                           patch_request_class)
 
 
 class TestMiscellaneous(object):

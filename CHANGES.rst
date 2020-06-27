@@ -4,6 +4,8 @@ Changelog
 unreleased
 ----------
 
+- start using pre-commit.com
+  (`#4 <https://github.com/jugmac00/flask-uploads/issues/4>`_)
 - update README
   (`#14 <https://github.com/jugmac00/flask-uploads/issues/14>`_)
 - setup CI (Travis)

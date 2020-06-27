@@ -15,10 +15,9 @@ Links
 """
 from setuptools import setup
 
-
 setup(
     name='Flask-Uploads',
-    version='0.2.1',
+    version='0.3.dev0',
     url='https://github.com/maxcountryman/flask-uploads',
     license='MIT',
     author='Matthew "LeafStorm" Frazier',

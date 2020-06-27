@@ -9,7 +9,13 @@ an `UploadSet` object and upload your files to it.
 :license:   MIT/X11, see LICENSE for details
 """
 
+import os.path
+import posixpath
 import sys
+
+from flask import Blueprint, abort, current_app, send_from_directory, url_for
+from werkzeug.datastructures import FileStorage
+from werkzeug.utils import secure_filename
 
 PY3 = sys.version_info[0] == 3
 
@@ -18,15 +24,8 @@ if PY3:
 else:
     string_types = basestring,
 
-import os.path
-import posixpath
 
-from flask import current_app, send_from_directory, abort, url_for
-from itertools import chain
-from werkzeug.datastructures import FileStorage
-from werkzeug.utils import secure_filename
 
-from flask import Blueprint
 
 # Extension presets
 

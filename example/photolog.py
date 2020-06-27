@@ -7,12 +7,13 @@ posts that are photos.
 """
 import datetime
 import uuid
-from flask import (Flask, request, url_for, redirect, render_template, flash,
-                   session, g)
-from flask.ext.couchdb import (CouchDBManager, Document, TextField,
-                              DateTimeField, ViewField)
-from flask.ext.uploads import (UploadSet, configure_uploads, IMAGES,
-                              UploadNotAllowed)
+
+from flask import (Flask, flash, g, redirect, render_template, request,
+                   session, url_for)
+from flask.ext.couchdb import (CouchDBManager, DateTimeField, Document,
+                               TextField, ViewField)
+from flask.ext.uploads import (IMAGES, UploadNotAllowed, UploadSet,
+                               configure_uploads)
 
 # defaults
 
