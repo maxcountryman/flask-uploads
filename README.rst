@@ -8,6 +8,10 @@
     :alt: PyPI
     :target: https://github.com/jugmac00/flask-reuploaded
 
+.. image:: https://img.shields.io/pypi/pyversions/flask-reuploaded   
+    :alt: PyPI - Python Version
+    :target: https://pypi.org/project/Flask-Reuploaded/
+
 
 Flask-Reuploaded
 ================
