@@ -4,6 +4,8 @@ Changelog
 unreleased
 ----------
 
+- add migration guide from `Flask-Uploads` to `Flask-Reuploaded`
+  (`#11 <https://github.com/jugmac00/flask-reuploaded/issues/11>`_)
 - add packaging guide
   (`#28 <https://github.com/jugmac00/flask-reuploaded/issues/28>`_)
 - update installation instruction in README
