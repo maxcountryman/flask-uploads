@@ -13,6 +13,7 @@ cache:
 
 install:
   - pip install -U pip tox tox-travis
+  - pip install coveralls
 
 script:
   - tox
