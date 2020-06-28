@@ -22,6 +22,27 @@ Goals
 - provide working PyPi packages
 
 
+Migration guide from `Flask-Uploads`
+------------------------------------
+
+If you have used `Flask-Uploads` and want to migrate to `Flask-Reuploaded`,
+you only have to install `Flask-Reuploaded` instead of `Flask-Uploads`.
+
+That's all!
+
+So, if you use `pip` to install your packages, instead of ...
+
+    $ pip install `Flask-Uploads`  # don't do this! package is broken
+
+... just do ...
+
+    $ pip install `Flask-Reuploaded`
+
+`Flask-Reuploaded` is a drop-in replacement.
+
+This means you do not have to change a single line of code.
+
+
 Contributing
 ------------
 
