@@ -4,7 +4,8 @@
 .. image:: https://coveralls.io/repos/github/jugmac00/flask-reuploaded/badge.svg?branch=master
     :target: https://coveralls.io/github/jugmac00/flask-reuploaded?branch=master
 
-.. image:: https://img.shields.io/pypi/v/flask-reuploaded   :alt: PyPI
+.. image:: https://img.shields.io/pypi/v/flask-reuploaded   
+    :alt: PyPI
     :target: https://github.com/jugmac00/flask-reuploaded
 
 
