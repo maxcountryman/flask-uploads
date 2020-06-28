@@ -1,3 +1,7 @@
+.. image:: https://travis-ci.com/jugmac00/flask-reuploaded.svg?branch=master
+    :target: https://travis-ci.com/jugmac00/flask-reuploaded
+
+
 Flask-Reuploaded
 ================
 

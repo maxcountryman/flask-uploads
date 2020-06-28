@@ -3,7 +3,8 @@ Changelog
 
 unreleased
 ----------
-
+- add badges to README
+  (`# 31 <https://github.com/jugmac00/flask-reuploaded/issues/31>`_)
 - add migration guide from `Flask-Uploads` to `Flask-Reuploaded`
   (`#11 <https://github.com/jugmac00/flask-reuploaded/issues/11>`_)
 - add packaging guide
