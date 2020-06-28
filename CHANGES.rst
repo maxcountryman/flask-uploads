@@ -1,6 +1,10 @@
 Changelog
 =========
 
+unreleased
+----------
+- update installation instruction in README
+
 0.3
 ---
 

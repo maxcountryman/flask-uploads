@@ -32,6 +32,4 @@ https://github.com/jugmac00/flask-reuploaded/issues
 Installation
 ------------
 
-There is no released version on PyPi yet.
-
-As the original `Flask-Uploads` is broken since months, this is a top priority.
+    $ pip install Flask-Reuploaded
