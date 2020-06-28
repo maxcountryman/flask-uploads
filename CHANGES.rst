@@ -4,6 +4,8 @@ Changelog
 unreleased
 ----------
 
+- add packaging guide
+  (`#28 <https://github.com/jugmac00/flask-reuploaded/issues/28>`_)
 - update installation instruction in README
 
 
