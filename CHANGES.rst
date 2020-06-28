@@ -1,6 +1,11 @@
 Changelog
 =========
 
+unreleased
+----------
+- nothing yet
+
+
 0.3.1
 -----
 - add badges to README
