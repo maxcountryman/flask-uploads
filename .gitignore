@@ -13,3 +13,6 @@ dist/
 
 # general
 *.pyc
+
+# documentation
+docs/_build/
