@@ -11,6 +11,8 @@ unreleased
   * update sphinx configuration
   * add documentation link to `setup.py`, so it shows on PyPi
   * add note about documentation in the README file
+  * delete old theme files
+- configure `isort` to force single line imports
 
 
 0.3.1
