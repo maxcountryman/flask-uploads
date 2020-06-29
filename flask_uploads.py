@@ -68,17 +68,17 @@ ARCHIVES = tuple('gz bz2 zip tar tgz txz 7z'.split())
 SOURCE = tuple(
     (
         'c cpp c++ h hpp h++ cxx hxx hdl '  # C/C++
-        + 'ada '  # Ada
-        + 'rs '  # Rust
-        + 'go '  # Go
-        + 'f for f90 f95 f03 '  # FORTRAN
-        + 'd dd di '  # D
-        + 'java '  # Java
-        + 'hs '  # Haskell
-        + 'cs '  # C Sharp
-        + 'fs '  # F Sharp compiled source (NOT .fsx, which is interactive-ready)
-        + 'cbl cob '  # COBOL
-        + 'asm s '  # Assembly
+        'ada '  # Ada
+        'rs '  # Rust
+        'go '  # Go
+        'f for f90 f95 f03 '  # FORTRAN
+        'd dd di '  # D
+        'java '  # Java
+        'hs '  # Haskell
+        'cs '  # C Sharp
+        'fs '  # F Sharp compiled source (NOT .fsx, which is interactive-ready)
+        'cbl cob '  # COBOL
+        'asm s '  # Assembly
     ).split()
 )
 
