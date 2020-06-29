@@ -26,7 +26,7 @@ PY3 = sys.version_info[0] == 3
 if PY3:
     string_types = str,
 else:
-    string_types = basestring,
+    string_types = basestring,  # noqa: F821
 
 
 
@@ -95,10 +95,6 @@ class UploadNotAllowed(Exception):
     This exception is raised if the upload was not allowed. You should catch
     it in your view code and display an appropriate message to the user.
     """
-
-
-def tuple_from(*iters):
-    return tuple(itertools.chain(*iters))
 
 
 def extension(filename):
