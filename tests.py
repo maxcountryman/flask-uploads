@@ -83,10 +83,10 @@ class TestConfiguration(object):
     def test_manual(self):
         f, p = UploadSet('files'), UploadSet('photos')
         setconfig = self.configure(f, p,
-            UPLOADED_FILES_DEST = '/var/files',
-            UPLOADED_FILES_URL = 'http://localhost:6001/',
-            UPLOADED_PHOTOS_DEST = '/mnt/photos',
-            UPLOADED_PHOTOS_URL = 'http://localhost:6002/'
+            UPLOADED_FILES_DEST='/var/files',
+            UPLOADED_FILES_URL='http://localhost:6001/',
+            UPLOADED_PHOTOS_DEST='/mnt/photos',
+            UPLOADED_PHOTOS_URL='http://localhost:6002/'
         )
         fconf, pconf = setconfig['files'], setconfig['photos']
         assert fconf == Config('/var/files', 'http://localhost:6001/')
@@ -95,8 +95,8 @@ class TestConfiguration(object):
     def test_selfserve(self):
         f, p = UploadSet('files'), UploadSet('photos')
         setconfig = self.configure(f, p,
-            UPLOADED_FILES_DEST = '/var/files',
-            UPLOADED_PHOTOS_DEST = '/mnt/photos'
+            UPLOADED_FILES_DEST='/var/files',
+            UPLOADED_PHOTOS_DEST='/mnt/photos'
         )
         fconf, pconf = setconfig['files'], setconfig['photos']
         assert fconf == Config('/var/files', None)
@@ -105,8 +105,8 @@ class TestConfiguration(object):
     def test_defaults(self):
         f, p = UploadSet('files'), UploadSet('photos')
         setconfig = self.configure(f, p,
-            UPLOADS_DEFAULT_DEST = '/var/uploads',
-            UPLOADS_DEFAULT_URL = 'http://localhost:6000/'
+            UPLOADS_DEFAULT_DEST='/var/uploads',
+            UPLOADS_DEFAULT_URL='http://localhost:6000/'
         )
         fconf, pconf = setconfig['files'], setconfig['photos']
         assert fconf == Config('/var/uploads/files',
@@ -117,7 +117,7 @@ class TestConfiguration(object):
     def test_default_selfserve(self):
         f, p = UploadSet('files'), UploadSet('photos')
         setconfig = self.configure(f, p,
-            UPLOADS_DEFAULT_DEST = '/var/uploads'
+            UPLOADS_DEFAULT_DEST='/var/uploads'
         )
         fconf, pconf = setconfig['files'], setconfig['photos']
         assert fconf == Config('/var/uploads/files', None)
@@ -126,10 +126,10 @@ class TestConfiguration(object):
     def test_mixed_defaults(self):
         f, p = UploadSet('files'), UploadSet('photos')
         setconfig = self.configure(f, p,
-            UPLOADS_DEFAULT_DEST = '/var/uploads',
-            UPLOADS_DEFAULT_URL = 'http://localhost:6001/',
-            UPLOADED_PHOTOS_DEST = '/mnt/photos',
-            UPLOADED_PHOTOS_URL = 'http://localhost:6002/'
+            UPLOADS_DEFAULT_DEST='/var/uploads',
+            UPLOADS_DEFAULT_URL='http://localhost:6001/',
+            UPLOADED_PHOTOS_DEST='/mnt/photos',
+            UPLOADED_PHOTOS_URL='http://localhost:6002/'
         )
         fconf, pconf = setconfig['files'], setconfig['photos']
         assert fconf == Config('/var/uploads/files',
@@ -142,9 +142,9 @@ class TestConfiguration(object):
         ))
         p = UploadSet('photos')
         setconfig = self.configure(f, p,
-            INSTANCE = '/home/me/webapps/thisapp',
-            UPLOADED_PHOTOS_DEST = '/mnt/photos',
-            UPLOADED_PHOTOS_URL = 'http://localhost:6002/'
+            INSTANCE='/home/me/webapps/thisapp',
+            UPLOADED_PHOTOS_DEST='/mnt/photos',
+            UPLOADED_PHOTOS_URL='http://localhost:6002/'
         )
         fconf, pconf = setconfig['files'], setconfig['photos']
         assert fconf == Config('/home/me/webapps/thisapp/files', None)
