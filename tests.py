@@ -19,7 +19,6 @@ from flask_uploads import addslash
 from flask_uploads import configure_uploads
 from flask_uploads import extension
 from flask_uploads import lowercase_ext
-from flask_uploads import patch_request_class
 
 
 class TestMiscellaneous(object):
