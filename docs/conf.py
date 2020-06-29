@@ -18,7 +18,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Flask-Reuploaded'
-copyright = u'Matthew "LeafStorm" Frazier(2010-2020), Jürgen Gmach (2020)'
+copyright = u'Matthew "LeafStorm" Frazier(2010), Jürgen Gmach (2020)'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
