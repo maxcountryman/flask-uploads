@@ -423,10 +423,10 @@ class UploadSet(object):
             folder, name = os.path.split(name)
 
         basename = self.get_basename(storage.filename)
-        
+
         if not self.file_allowed(storage, basename):
             raise UploadNotAllowed()
-        
+
         if name:
             if name.endswith('.'):
                 basename = name + extension(basename)
