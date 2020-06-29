@@ -21,6 +21,8 @@ Preparation
 
 - make sure the version number is set correctly in `setup.py`
 
+- make sure the version number is set correctly in `docs/conf.py`
+
 
 Release process
 ---------------
