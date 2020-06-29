@@ -29,8 +29,6 @@ else:
     string_types = basestring,  # noqa: F821
 
 
-
-
 # Extension presets
 
 #: This just contains plain text files (.txt).
@@ -434,8 +432,6 @@ class UploadSet(object):
                 basename = name + extension(basename)
             else:
                 basename = name
-
-
 
         if folder:
             target_folder = os.path.join(self.config.destination, folder)
