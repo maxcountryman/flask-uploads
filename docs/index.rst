@@ -1,7 +1,7 @@
 =============
 Flask-Uploads
 =============
-.. currentmodule:: flaskext.uploads
+.. currentmodule:: flask_uploads
 
 Flask-Uploads allows your application to flexibly and efficiently handle file
 uploading and serving the uploaded files.

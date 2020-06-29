@@ -3,7 +3,9 @@ Changelog
 
 unreleased
 ----------
-- nothing yet
+- use blue ReadTheDocs theme
+- update sphinx configuration
+  (`#5 <https://github.com/jugmac00/flask-reuploaded/issues/5>`_)
 
 
 0.3.1
