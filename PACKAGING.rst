@@ -39,7 +39,7 @@ Release process
  
     # build the packages
 
-    $ python -m pep517.build .
+    $ dev-env/bin/python -m pep517.build .
 
     # make clean slate
 
