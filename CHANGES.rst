@@ -1,8 +1,8 @@
 Changelog
 =========
 
-unreleased
-----------
+0.3.2
+-----
 - documentation update
   (`#5 <https://github.com/jugmac00/flask-reuploaded/issues/5>`_)
 
