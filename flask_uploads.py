@@ -65,7 +65,9 @@ ARCHIVES = tuple('gz bz2 zip tar tgz txz 7z'.split())
 # assembled, linked, or executed. Supports C, C++, Ada, Rust, Go (Golang),
 # FORTRAN, D, Java, C Sharp, F Sharp (compiled only), COBOL, Haskell, and
 # assembly.
-SOURCE = tuple(('c cpp c++ h hpp h++ cxx hxx hdl '  # C/C++
+SOURCE = tuple(
+    (
+        'c cpp c++ h hpp h++ cxx hxx hdl '  # C/C++
         + 'ada '  # Ada
         + 'rs '  # Rust
         + 'go '  # Go
@@ -77,7 +79,8 @@ SOURCE = tuple(('c cpp c++ h hpp h++ cxx hxx hdl '  # C/C++
         + 'fs '  # F Sharp compiled source (NOT .fsx, which is interactive-ready)
         + 'cbl cob '  # COBOL
         + 'asm s '  # Assembly
-        ).split())
+    ).split()
+)
 
 # This contains shared libraries and executable files (.so, .exe and .dll).
 # Most of the time, you will not want to allow this - it's better suited for
