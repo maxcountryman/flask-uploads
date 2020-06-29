@@ -1,6 +1,11 @@
 Changelog
 =========
 
+unreleased
+----------
+- no changes yet
+
+
 0.3.2
 -----
 - documentation update
