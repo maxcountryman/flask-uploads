@@ -9,7 +9,8 @@ unreleased
   * update docs/index.rst
   * use blue ReadTheDocs theme
   * update sphinx configuration
-
+  * add documentation link to `setup.py`, so it shows on PyPi
+  * add note about documentation in the README file
 
 
 0.3.1

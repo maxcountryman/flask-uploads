@@ -58,14 +58,22 @@ So, if you use `pip` to install your packages, instead of ...
 This means you do not have to change a single line of code.
 
 
+Installation
+------------
+
+    $ pip install Flask-Reuploaded
+
+
+Documentation
+-------------
+
+The documentation can be found at...
+
+https://flask-reuploaded.readthedocs.io/en/latest/
+
+
 Contributing
 ------------
 
 Contributions are more than welcome. Please have a look at
 https://github.com/jugmac00/flask-reuploaded/issues
-
-
-Installation
-------------
-
-    $ pip install Flask-Reuploaded
