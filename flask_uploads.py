@@ -60,10 +60,10 @@ SCRIPTS = tuple('js php pl py rb sh'.split())
 ARCHIVES = tuple('gz bz2 zip tar tgz txz 7z'.split())
 
 #: This contains nonexecutable source files - those which need to be
-#: compiled or assembled to binaries to be used. They are generally safe to 
+#: compiled or assembled to binaries to be used. They are generally safe to
 #: accept, as without an existing RCE vulnerability, they cannot be compiled,
 #: assembled, linked, or executed. Supports C, C++, Ada, Rust, Go (Golang),
-#: FORTRAN, D, Java, C Sharp, F Sharp (compiled only), COBOL, Haskell, and 
+#: FORTRAN, D, Java, C Sharp, F Sharp (compiled only), COBOL, Haskell, and
 #: assembly.
 SOURCE = tuple(('c cpp c++ h hpp h++ cxx hxx hdl ' # C/C++
         + 'ada ' # Ada
