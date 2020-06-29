@@ -1,9 +1,9 @@
-=============
-Flask-Uploads
-=============
+================
+Flask-Reuploaded
+================
 .. currentmodule:: flask_uploads
 
-Flask-Uploads allows your application to flexibly and efficiently handle file
+Flask-Reuploaded allows your application to flexibly and efficiently handle file
 uploading and serving the uploaded files.
 You can create different sets of uploads - one for document attachments, one
 for photos, etc. - and the application can be configured to save them all in
@@ -16,7 +16,7 @@ different places and to generate different URLs for them.
 
 Configuration
 =============
-If you're just deploying an application that uses Flask-Uploads, you can
+If you're just deploying an application that uses Flask-Reuploaded, you can
 customize its behavior extensively from the application's configuration.
 Check the application's documentation or source code to see how it loads its
 configuration.
@@ -58,10 +58,9 @@ that apply as "defaults" if you don't provide the proper settings otherwise.
 However, you don't have to set any of the ``_URL`` settings - if you don't,
 then they will be served internally by Flask. They are just there so if you
 have heavy upload traffic, you can have a faster production server like Nginx
-or Lighttpd serve the uploads.
+serve the uploads.
 
-If you are running Flask 0.6 or greater, or the application uses
-``patch_request_class(app, None)``, then you can set `MAX_CONTENT_LENGTH` to
+Since Flask 0.6 you can set `MAX_CONTENT_LENGTH` to
 limit the size of uploaded files.
 
 
@@ -94,7 +93,7 @@ And then you can use the `~UploadSet.save` method to save uploaded files and
         return render_template('show.html', url=url, photo=photo)
 
 If you have a "default location" for storing uploads - for example, if your
-app has an "instance" directory like `Zine`_ and uploads should be saved to
+app has an "instance" directory and uploads should be saved to
 the instance directory's ``uploads`` folder - you can pass a ``default_dest``
 callable to the set constructor. It takes the application as its argument.
 For example::
@@ -103,8 +102,6 @@ For example::
 
 This won't prevent a different destination from being set in the config,
 though. It's just to save your users a little configuration time.
-
-.. _Zine: http://zine.pocoo.org/
 
 
 App Configuration
