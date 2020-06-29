@@ -67,6 +67,7 @@ class TestMiscellaneous(object):
 
 Config = UploadConfiguration
 
+
 class TestConfiguration(object):
     def setup(self):
         self.app = Flask(__name__)
