@@ -3,10 +3,12 @@ Changelog
 
 unreleased
 ----------
-- update docs/index.rst
-- use blue ReadTheDocs theme
-- update sphinx configuration
+- documentation update
   (`#5 <https://github.com/jugmac00/flask-reuploaded/issues/5>`_)
+  * update docs/index.rst
+  * use blue ReadTheDocs theme
+  * update sphinx configuration
+
 
 
 0.3.1
