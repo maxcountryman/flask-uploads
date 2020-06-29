@@ -506,9 +506,11 @@ class TestingFileStorage(FileStorage):
     def __init__(self, stream=None, filename=None, name=None,
                  content_type='application/octet-stream', content_length=-1,
                  headers=None):
-        FileStorage.__init__(self, stream, filename, name=name,
+        FileStorage.__init__(
+            self, stream, filename, name=name,
             content_type=content_type, content_length=content_length,
-            headers=None)
+            headers=None
+        )
         self.saved = None
 
     def save(self, dst, buffer_size=16384):
