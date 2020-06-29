@@ -13,7 +13,11 @@ import os.path
 import posixpath
 import sys
 
-from flask import Blueprint, abort, current_app, send_from_directory, url_for
+from flask import Blueprint
+from flask import abort
+from flask import current_app
+from flask import send_from_directory
+from flask import url_for
 from werkzeug.datastructures import FileStorage
 from werkzeug.utils import secure_filename
 
