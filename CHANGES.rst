@@ -3,7 +3,8 @@ Changelog
 
 unreleased
 ----------
-- no changes yet
+- add short contribution guide
+  (`#6 <https://github.com/jugmac00/flask-reuploaded/issues/6>`_)
 
 
 0.3.2
