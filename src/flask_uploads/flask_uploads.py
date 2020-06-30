@@ -22,35 +22,8 @@ from werkzeug.utils import secure_filename
 
 from .exceptions import UploadNotAllowed
 from .extensions import DEFAULTS
-
-
-def extension(filename):
-    ext = os.path.splitext(filename)[1]
-    if ext.startswith('.'):
-        # os.path.splitext retains . separator
-        ext = ext[1:]
-    return ext
-
-
-def lowercase_ext(filename):
-    """
-    This is a helper used by UploadSet.save to provide lowercase extensions for
-    all processed files, to compare with configured extensions in the same
-    case.
-
-    .. versionchanged:: 0.1.4
-       Filenames without extensions are no longer lowercased, only the
-       extension is returned in lowercase, if an extension exists.
-
-    :param filename: The filename to ensure has a lowercase extension.
-    """
-    if '.' in filename:
-        main, ext = os.path.splitext(filename)
-        return main + ext.lower()
-    # For consistency with os.path.splitext,
-    # do not treat a filename without an extension as an extension.
-    # That is, do not return filename.lower().
-    return filename
+from .extensions import extension
+from .extensions import lowercase_ext
 
 
 def addslash(url):
