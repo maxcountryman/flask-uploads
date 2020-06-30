@@ -2,6 +2,9 @@
 
 isort:skip_file
 """
+# This huge list of imports is kept on purpose,
+# as `Flask-Uploads` provided them as public API,
+# and `Flask-Reuploaded` tries to stay compatible.
 from .flask_uploads import TestingFileStorage
 from .flask_uploads import UploadConfiguration
 from .flask_uploads import UploadSet
