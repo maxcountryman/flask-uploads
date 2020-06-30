@@ -5,6 +5,23 @@ isort:skip_file
 # This huge list of imports is kept on purpose,
 # as `Flask-Uploads` provided them as public API,
 # and `Flask-Reuploaded` tries to stay compatible.
+from .backwards_compatibility import patch_request_class
+
+from .exceptions import UploadNotAllowed
+
+from .extensions import ALL
+from .extensions import AllExcept
+from .extensions import TEXT
+from .extensions import DOCUMENTS
+from .extensions import IMAGES
+from .extensions import AUDIO
+from .extensions import DATA
+from .extensions import SCRIPTS
+from .extensions import ARCHIVES
+from .extensions import SOURCE
+from .extensions import EXECUTABLES
+from .extensions import DEFAULTS
+
 from .flask_uploads import UploadConfiguration
 from .flask_uploads import UploadSet
 from .flask_uploads import addslash
@@ -13,25 +30,7 @@ from .flask_uploads import extension
 from .flask_uploads import lowercase_ext
 from .flask_uploads import config_for_set
 
-from .exceptions import UploadNotAllowed
-
 from .test_helper import TestingFileStorage
-
-from .flask_uploads import ALL
-from .flask_uploads import AllExcept
-from .flask_uploads import TEXT
-from .flask_uploads import DOCUMENTS
-from .flask_uploads import IMAGES
-from .flask_uploads import AUDIO
-from .flask_uploads import DATA
-from .flask_uploads import SCRIPTS
-from .flask_uploads import ARCHIVES
-from .flask_uploads import SOURCE
-from .flask_uploads import EXECUTABLES
-from .flask_uploads import DEFAULTS
-
-from .backwards_compatibility import patch_request_class
-
 
 __all__ = [
     "TestingFileStorage",
