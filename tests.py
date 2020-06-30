@@ -7,6 +7,7 @@ from __future__ import with_statement
 
 import os.path
 
+import pytest
 from flask import Flask
 from flask import url_for
 
@@ -245,6 +246,18 @@ class TestSaving(object):
         res2 = uset.save(tfs2)
         assert res2 == 'myapp.wsgi'
         assert tfs2.saved == '/uploads/myapp.wsgi'
+
+    def test_storage_is_not_a_werkzeug_datastructure(self):
+        """UploadSet.save needs a valid FileStorage object.
+
+        When something different is passed in, a TypeError gets raised.
+        """
+        uset = UploadSet('files', ALL)
+        uset._config = Config('/uploads')
+        non_storage = 'this is no werkzeug.datastructure.FileStorage'
+
+        with pytest.raises(TypeError):
+            uset.save(non_storage)
 
 
 class TestConflictResolution(object):

@@ -379,13 +379,16 @@ class UploadSet(object):
         return os.path.join(target_folder, filename)
 
     def file_allowed(self, storage, basename):
-        """
-        This tells whether a file is allowed. It should return `True` if the
-        given `werkzeug.FileStorage` object can be saved with the given
-        basename, and `False` if it can't. The default implementation just
-        checks the extension, so you can override this if you want.
+        """This tells whether a file is allowed.
 
-        :param storage: The `werkzeug.FileStorage` to check.
+        It should return `True` if the given
+        `werkzeug.datastructures.FileStorage` object can be saved with
+        the given basename, and `False` if it can't.
+
+        The default implementation just checks the extension,
+        so you can override this if you want.
+
+        :param storage: The `werkzeug.datastructures.FileStorage` to check.
         :param basename: The basename it will be saved under.
         """
         return self.extension_allowed(extension(basename))
@@ -405,9 +408,13 @@ class UploadSet(object):
         return lowercase_ext(secure_filename(filename))
 
     def save(self, storage, folder=None, name=None):
-        """
-        This saves a `werkzeug.FileStorage` into this upload set. If the
-        upload is not allowed, an `UploadNotAllowed` error will be raised.
+        """This saves the `storage` into this upload set.
+
+        A `storage` is a `werkzeug.datastructures.FileStorage`.
+
+        If the upload is not allowed,
+        an `UploadNotAllowed` error will be raised.
+
         Otherwise, the file will be saved and its name (including the folder)
         will be returned.
 
