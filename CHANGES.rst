@@ -3,6 +3,8 @@ Changelog
 
 unreleased
 ----------
+- use a `src` directory for source code
+  (`#21 <https://github.com/jugmac00/flask-reuploaded/issues/21>`_)
 - add tox env for check-python-versions
   (`#20 <https://github.com/jugmac00/flask-reuploaded/issues/20>`_)
 - add flake8-bugbear
