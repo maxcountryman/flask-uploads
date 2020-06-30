@@ -3,6 +3,9 @@ Changelog
 
 unreleased
 ----------
+- add tox env for check-python-versions
+  (`#20 <https://github.com/jugmac00/flask-reuploaded/issues/20>`_)
+- add flake8-bugbear
 - add short contribution guide
   (`#6 <https://github.com/jugmac00/flask-reuploaded/issues/6>`_)
 
