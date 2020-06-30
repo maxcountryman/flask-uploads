@@ -5,7 +5,6 @@ isort:skip_file
 # This huge list of imports is kept on purpose,
 # as `Flask-Uploads` provided them as public API,
 # and `Flask-Reuploaded` tries to stay compatible.
-from .flask_uploads import TestingFileStorage
 from .flask_uploads import UploadConfiguration
 from .flask_uploads import UploadSet
 from .flask_uploads import addslash
@@ -15,6 +14,8 @@ from .flask_uploads import lowercase_ext
 from .flask_uploads import config_for_set
 
 from .exceptions import UploadNotAllowed
+
+from .test_helper import TestingFileStorage
 
 from .flask_uploads import ALL
 from .flask_uploads import AllExcept

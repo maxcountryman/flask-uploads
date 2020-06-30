@@ -11,7 +11,6 @@ an `UploadSet` object and upload your files to it.
 
 import os.path
 import posixpath
-import sys
 
 from flask import Blueprint
 from flask import abort
@@ -22,13 +21,6 @@ from werkzeug.datastructures import FileStorage
 from werkzeug.utils import secure_filename
 
 from .exceptions import UploadNotAllowed
-
-PY3 = sys.version_info[0] == 3
-
-if sys.version_info < (3,):  # python 2
-    string_types = basestring,  # noqa: F821
-else:  # python 3
-    string_types = str,
 
 # Extension presets
 
@@ -447,45 +439,3 @@ def uploaded_file(setname, filename):
     if config is None:
         abort(404)
     return send_from_directory(config.destination, filename)
-
-
-class TestingFileStorage(FileStorage):
-    """
-    This is a helper for testing upload behavior in your application. You
-    can manually create it, and its save method is overloaded to set `saved`
-    to the name of the file it was saved to. All of these parameters are
-    optional, so only bother setting the ones relevant to your application.
-
-    :param stream: A stream. The default is an empty stream.
-    :param filename: The filename uploaded from the client. The default is the
-                     stream's name.
-    :param name: The name of the form field it was loaded from. The default is
-                 `None`.
-    :param content_type: The content type it was uploaded as. The default is
-                         ``application/octet-stream``.
-    :param content_length: How long it is. The default is -1.
-    :param headers: Multipart headers as a `werkzeug.Headers`. The default is
-                    `None`.
-    """
-    def __init__(self, stream=None, filename=None, name=None,
-                 content_type='application/octet-stream', content_length=-1,
-                 headers=None):
-        FileStorage.__init__(
-            self, stream, filename, name=name,
-            content_type=content_type, content_length=content_length,
-            headers=None
-        )
-        self.saved = None
-
-    def save(self, dst, buffer_size=16384):
-        """
-        This marks the file as saved by setting the `saved` attribute to the
-        name of the file it was saved to.
-
-        :param dst: The file to save to.
-        :param buffer_size: Ignored.
-        """
-        if isinstance(dst, string_types):
-            self.saved = dst
-        else:
-            self.saved = dst.name
