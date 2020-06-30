@@ -25,11 +25,10 @@ from .exceptions import UploadNotAllowed
 
 PY3 = sys.version_info[0] == 3
 
-if PY3:
-    string_types = str,
-else:
+if sys.version_info < (3,):  # python 2
     string_types = basestring,  # noqa: F821
-
+else:  # python 3
+    string_types = str,
 
 # Extension presets
 
