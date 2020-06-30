@@ -21,6 +21,8 @@ from flask import url_for
 from werkzeug.datastructures import FileStorage
 from werkzeug.utils import secure_filename
 
+from .exceptions import UploadNotAllowed
+
 PY3 = sys.version_info[0] == 3
 
 if PY3:
@@ -89,13 +91,6 @@ EXECUTABLES = tuple('so exe dll'.split())
 
 # The default allowed extensions - `TEXT`, `DOCUMENTS`, `DATA`, and `IMAGES`.
 DEFAULTS = TEXT + DOCUMENTS + IMAGES + DATA
-
-
-class UploadNotAllowed(Exception):
-    """
-    This exception is raised if the upload was not allowed. You should catch
-    it in your view code and display an appropriate message to the user.
-    """
 
 
 def extension(filename):

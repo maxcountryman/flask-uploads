@@ -14,6 +14,8 @@ from .flask_uploads import extension
 from .flask_uploads import lowercase_ext
 from .flask_uploads import config_for_set
 
+from .exceptions import UploadNotAllowed
+
 from .flask_uploads import ALL
 from .flask_uploads import AllExcept
 from .flask_uploads import TEXT
@@ -52,4 +54,5 @@ __all__ = [
     "SOURCE",
     "EXECUTABLES",
     "DEFAULTS",
+    "UploadNotAllowed",
 ]
