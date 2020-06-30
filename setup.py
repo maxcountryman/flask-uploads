@@ -2,6 +2,7 @@
 import codecs
 import os
 
+from setuptools import find_packages
 from setuptools import setup
 
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -39,7 +40,8 @@ setup(
     maintainer_email="juergen.gmach@googlemail.com",
     description="Flexible and efficient upload handling for Flask",
     long_description=LONG,
-    py_modules=["flask_uploads"],
+    packages=find_packages(where="src"),
+    package_dir={"": "src"},
     zip_safe=False,
     platforms="any",
     install_requires=["Flask>=1.0.4"],
