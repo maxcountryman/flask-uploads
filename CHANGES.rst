@@ -3,6 +3,8 @@ Changelog
 
 unreleased
 ----------
+- deprecate `patch_request_class`
+  (`#43 <https://github.com/jugmac00/flask-reuploaded/issues/43>`_)
 - use a `src` directory for source code
   (`#21 <https://github.com/jugmac00/flask-reuploaded/issues/21>`_)
 - add tox env for check-python-versions

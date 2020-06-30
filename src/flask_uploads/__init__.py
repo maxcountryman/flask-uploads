@@ -12,7 +12,6 @@ from .flask_uploads import addslash
 from .flask_uploads import configure_uploads
 from .flask_uploads import extension
 from .flask_uploads import lowercase_ext
-from .flask_uploads import patch_request_class
 from .flask_uploads import config_for_set
 
 from .flask_uploads import ALL
@@ -27,6 +26,8 @@ from .flask_uploads import ARCHIVES
 from .flask_uploads import SOURCE
 from .flask_uploads import EXECUTABLES
 from .flask_uploads import DEFAULTS
+
+from .backwards_compatibility import patch_request_class
 
 
 __all__ = [
