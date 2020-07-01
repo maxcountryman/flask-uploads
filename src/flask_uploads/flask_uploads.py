@@ -49,8 +49,8 @@ def config_for_set(uset, app, defaults=None):
     if defaults is None:
         defaults = dict(dest=None, url=None)
 
-    allow_extns = tuple(config.get(prefix + 'ALLOW', ()))
-    deny_extns = tuple(config.get(prefix + 'DENY', ()))
+    allow_extensions = tuple(config.get(prefix + 'ALLOW', ()))
+    deny_extensions = tuple(config.get(prefix + 'DENY', ()))
     destination = config.get(prefix + 'DEST')
     base_url = config.get(prefix + 'URL')
 
@@ -70,7 +70,8 @@ def config_for_set(uset, app, defaults=None):
     if base_url is None and using_defaults and defaults['url']:
         base_url = addslash(defaults['url']) + uset.name + '/'
 
-    return UploadConfiguration(destination, base_url, allow_extns, deny_extns)
+    return UploadConfiguration(
+        destination, base_url, allow_extensions, deny_extensions)
 
 
 def configure_uploads(app, upload_sets):
