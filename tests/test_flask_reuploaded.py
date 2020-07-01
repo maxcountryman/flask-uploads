@@ -89,9 +89,9 @@ class TestConfiguration(object):
             UPLOADED_PHOTOS_DEST='/mnt/photos',
             UPLOADED_PHOTOS_URL='http://localhost:6002/'
         )
-        fconf, pconf = setconfig['files'], setconfig['photos']
-        assert fconf == Config('/var/files', 'http://localhost:6001/')
-        assert pconf == Config('/mnt/photos', 'http://localhost:6002/')
+        file_conf, photo_conf = setconfig['files'], setconfig['photos']
+        assert file_conf == Config('/var/files', 'http://localhost:6001/')
+        assert photo_conf == Config('/mnt/photos', 'http://localhost:6002/')
 
     def test_selfserve(self):
         f, p = UploadSet('files'), UploadSet('photos')
@@ -100,9 +100,9 @@ class TestConfiguration(object):
             UPLOADED_FILES_DEST='/var/files',
             UPLOADED_PHOTOS_DEST='/mnt/photos'
         )
-        fconf, pconf = setconfig['files'], setconfig['photos']
-        assert fconf == Config('/var/files', None)
-        assert pconf == Config('/mnt/photos', None)
+        file_conf, photo_conf = setconfig['files'], setconfig['photos']
+        assert file_conf == Config('/var/files', None)
+        assert photo_conf == Config('/mnt/photos', None)
 
     def test_defaults(self):
         f, p = UploadSet('files'), UploadSet('photos')
@@ -111,11 +111,11 @@ class TestConfiguration(object):
             UPLOADS_DEFAULT_DEST='/var/uploads',
             UPLOADS_DEFAULT_URL='http://localhost:6000/'
         )
-        fconf, pconf = setconfig['files'], setconfig['photos']
-        assert fconf == Config('/var/uploads/files',
-                               'http://localhost:6000/files/')
-        assert pconf == Config('/var/uploads/photos',
-                               'http://localhost:6000/photos/')
+        file_conf, photo_conf = setconfig['files'], setconfig['photos']
+        assert file_conf == Config(
+            '/var/uploads/files', 'http://localhost:6000/files/')
+        assert photo_conf == Config(
+            '/var/uploads/photos', 'http://localhost:6000/photos/')
 
     def test_default_selfserve(self):
         f, p = UploadSet('files'), UploadSet('photos')
@@ -123,9 +123,9 @@ class TestConfiguration(object):
             f, p,
             UPLOADS_DEFAULT_DEST='/var/uploads'
         )
-        fconf, pconf = setconfig['files'], setconfig['photos']
-        assert fconf == Config('/var/uploads/files', None)
-        assert pconf == Config('/var/uploads/photos', None)
+        file_conf, photo_conf = setconfig['files'], setconfig['photos']
+        assert file_conf == Config('/var/uploads/files', None)
+        assert photo_conf == Config('/var/uploads/photos', None)
 
     def test_mixed_defaults(self):
         f, p = UploadSet('files'), UploadSet('photos')
@@ -136,12 +136,12 @@ class TestConfiguration(object):
             UPLOADED_PHOTOS_DEST='/mnt/photos',
             UPLOADED_PHOTOS_URL='http://localhost:6002/'
         )
-        fconf, pconf = setconfig['files'], setconfig['photos']
-        assert fconf == Config('/var/uploads/files',
-                               'http://localhost:6001/files/')
-        assert pconf == Config('/mnt/photos', 'http://localhost:6002/')
+        file_conf, photo_conf = setconfig['files'], setconfig['photos']
+        assert file_conf == Config(
+            '/var/uploads/files', 'http://localhost:6001/files/')
+        assert photo_conf == Config('/mnt/photos', 'http://localhost:6002/')
 
-    def test_defaultdest_callable(self):
+    def test_default_destination_callable(self):
         f = UploadSet('files', default_dest=lambda app: os.path.join(
             app.config['INSTANCE'], 'files'
         ))
@@ -152,9 +152,9 @@ class TestConfiguration(object):
             UPLOADED_PHOTOS_DEST='/mnt/photos',
             UPLOADED_PHOTOS_URL='http://localhost:6002/'
         )
-        fconf, pconf = setconfig['files'], setconfig['photos']
-        assert fconf == Config('/home/me/webapps/thisapp/files', None)
-        assert pconf == Config('/mnt/photos', 'http://localhost:6002/')
+        file_conf, photo_conf = setconfig['files'], setconfig['photos']
+        assert file_conf == Config('/home/me/webapps/thisapp/files', None)
+        assert photo_conf == Config('/mnt/photos', 'http://localhost:6002/')
 
 
 class TestPreconditions(object):
@@ -239,13 +239,13 @@ class TestSaving(object):
         uset = UploadSet('files', ALL)
         uset._config = Config('/uploads')
         tfs1 = TestingFileStorage(filename='/etc/passwd')
-        tfs2 = TestingFileStorage(filename='../../myapp.wsgi')
+        tfs2 = TestingFileStorage(filename='../../my_app.wsgi')
         res1 = uset.save(tfs1)
         assert res1 == 'etc_passwd'
         assert tfs1.saved == '/uploads/etc_passwd'
         res2 = uset.save(tfs2)
-        assert res2 == 'myapp.wsgi'
-        assert tfs2.saved == '/uploads/myapp.wsgi'
+        assert res2 == 'my_app.wsgi'
+        assert tfs2.saved == '/uploads/my_app.wsgi'
 
     def test_storage_is_not_a_werkzeug_datastructure(self):
         """UploadSet.save needs a valid FileStorage object.
@@ -277,8 +277,8 @@ class TestConflictResolution(object):
     def extant(self, *files):
         self.extant_files.extend(files)
 
-    def exists(self, fname):
-        return fname in self.extant_files
+    def exists(self, file_name):
+        return file_name in self.extant_files
 
     def test_self(self):
         assert not os.path.exists('/uploads/foo.txt')
