@@ -303,7 +303,6 @@ class TestConflictResolution(object):
         assert res == 'foo_6.txt'
 
     def test_conflict_without_extension(self):
-        # Test case for issue #7.
         uset = UploadSet('files', extensions=(''))
         uset._config = Config('/uploads')
         tfs = TestingFileStorage(filename='foo')
