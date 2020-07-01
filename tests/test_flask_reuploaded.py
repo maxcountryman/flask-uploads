@@ -5,12 +5,12 @@
 """
 from __future__ import with_statement
 
+import os
 import os.path
 
 import pytest
 from flask import Flask
 from flask import url_for
-
 from flask_uploads import ALL
 from flask_uploads import AllExcept
 from flask_uploads import TestingFileStorage

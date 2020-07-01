@@ -8,7 +8,7 @@ an `UploadSet` object and upload your files to it.
 :copyright: 2010 Matthew "LeafStorm" Frazier
 :license:   MIT/X11, see LICENSE for details
 """
-
+import os
 import os.path
 import posixpath
 
