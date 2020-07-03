@@ -3,6 +3,8 @@ Changelog
 
 unreleased
 ----------
+- drop support for Python 2 and Python 3.5
+  (`#8 <https://github.com/jugmac00/flask-reuploaded/issues/8>`_)
 - deprecate `patch_request_class`
   (`#43 <https://github.com/jugmac00/flask-reuploaded/issues/43>`_)
 - use a `src` directory for source code
