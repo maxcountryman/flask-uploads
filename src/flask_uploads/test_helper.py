@@ -5,14 +5,7 @@ This means:
     - it has to be importable
     - it can't be moved in the tests directory
 """
-import sys
-
 from werkzeug.datastructures import FileStorage
-
-if sys.version_info < (3,):  # python 2
-    string_types = basestring,  # noqa: F821
-else:  # python 3
-    string_types = str,
 
 
 class TestingFileStorage(FileStorage):
@@ -51,7 +44,7 @@ class TestingFileStorage(FileStorage):
         :param dst: The file to save to.
         :param buffer_size: Ignored.
         """
-        if isinstance(dst, string_types):
+        if isinstance(dst, str):
             self.saved = dst
         else:
             self.saved = dst.name

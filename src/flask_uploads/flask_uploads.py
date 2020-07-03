@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 flaskext.uploads
 ================
@@ -106,7 +105,7 @@ def configure_uploads(app, upload_sets):
         app.register_blueprint(uploads_mod)
 
 
-class UploadConfiguration(object):
+class UploadConfiguration:
     """
     This holds the configuration for a single `UploadSet`. The constructor's
     arguments are also the attributes.
@@ -134,7 +133,7 @@ class UploadConfiguration(object):
         return self.tuple == other.tuple
 
 
-class UploadSet(object):
+class UploadSet:
     """
     This represents a single set of uploaded files. Each upload set is
     independent of the others. This can be reused across multiple application

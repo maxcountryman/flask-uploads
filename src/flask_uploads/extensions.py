@@ -1,4 +1,3 @@
-
 """Extension presets and extension configuration."""
 import os
 
@@ -63,7 +62,7 @@ TEXT = ('txt',)
 DEFAULTS = TEXT + DOCUMENTS + IMAGES + DATA
 
 
-class All(object):
+class All:
     """
     This type can be used to allow all extensions. There is a predefined
     instance named `ALL`.
@@ -77,7 +76,7 @@ class All(object):
 ALL = All()
 
 
-class AllExcept(object):
+class AllExcept:
     """
     This can be used to allow all file types except certain ones. For example,
     to ban .exe and .iso files, pass::

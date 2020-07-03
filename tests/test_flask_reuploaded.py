@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
 """
 :copyright: 2010 Matthew "LeafStorm" Frazier
 :license:   MIT/X11, see LICENSE for details
 """
-from __future__ import with_statement
 
 import os
 import os.path
@@ -22,7 +20,7 @@ from flask_uploads import extension
 from flask_uploads import lowercase_ext
 
 
-class TestMiscellaneous(object):
+class TestMiscellaneous:
     def test_tfs(self):
         tfs = TestingFileStorage(filename='foo.bar')
         assert tfs.filename == 'foo.bar'
@@ -68,7 +66,7 @@ class TestMiscellaneous(object):
 Config = UploadConfiguration
 
 
-class TestConfiguration(object):
+class TestConfiguration:
     def setup(self):
         self.app = Flask(__name__)
 
@@ -157,7 +155,7 @@ class TestConfiguration(object):
         assert photo_conf == Config('/mnt/photos', 'http://localhost:6002/')
 
 
-class TestPreconditions(object):
+class TestPreconditions:
     def test_filenames(self):
         uset = UploadSet('files')
         uset._config = Config('/uploads')
@@ -178,7 +176,7 @@ class TestPreconditions(object):
             assert uset.extension_allowed(ext) is result
 
 
-class TestSaving(object):
+class TestSaving:
     def setup(self):
         self.old_makedirs = os.makedirs
         os.makedirs = lambda v: None
@@ -260,7 +258,7 @@ class TestSaving(object):
             uset.save(non_storage)
 
 
-class TestConflictResolution(object):
+class TestConflictResolution:
     def setup(self):
         self.extant_files = []
         self.old_exists = os.path.exists
@@ -311,7 +309,7 @@ class TestConflictResolution(object):
         assert res == 'foo_1'
 
 
-class TestPathsAndURLs(object):
+class TestPathsAndURLs:
     def test_path(self):
         uset = UploadSet('files')
         uset._config = Config('/uploads')
