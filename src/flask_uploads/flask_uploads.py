@@ -10,8 +10,16 @@ an `UploadSet` object and upload your files to it.
 import os
 import os.path
 import posixpath
+from typing import Any
+from typing import Callable
+from typing import Dict
+from typing import Iterable
+from typing import Optional
+from typing import Tuple
+from typing import Union
 
 from flask import Blueprint
+from flask import Flask
 from flask import abort
 from flask import current_app
 from flask import send_from_directory
@@ -25,13 +33,17 @@ from .extensions import extension
 from .extensions import lowercase_ext
 
 
-def addslash(url):
+def addslash(url: str) -> str:
     if url.endswith('/'):
         return url
     return url + '/'
 
 
-def config_for_set(uset, app, defaults=None):
+def config_for_set(
+        uset: 'UploadSet',
+        app: Flask,
+        defaults: Optional[Dict[str, Optional[str]]] = None
+) -> 'UploadConfiguration':
     """
     This is a helper function for `configure_uploads` that extracts the
     configuration for a single set.
@@ -48,8 +60,10 @@ def config_for_set(uset, app, defaults=None):
     if defaults is None:
         defaults = dict(dest=None, url=None)
 
-    allow_extensions = tuple(config.get(prefix + 'ALLOW', ()))
-    deny_extensions = tuple(config.get(prefix + 'DENY', ()))
+    allow_extensions = tuple(
+        config.get(prefix + 'ALLOW', ()))  # Union[Tuple[()], Tuple[str, ...]]
+    deny_extensions = tuple(
+        config.get(prefix + 'DENY', ()))  # Union[Tuple[()], Tuple[str, ...]]
     destination = config.get(prefix + 'DEST')
     base_url = config.get(prefix + 'URL')
 
@@ -66,14 +80,15 @@ def config_for_set(uset, app, defaults=None):
             else:
                 raise RuntimeError("no destination for set %s" % uset.name)
 
-    if base_url is None and using_defaults and defaults['url']:
-        base_url = addslash(defaults['url']) + uset.name + '/'
+    if base_url is None and using_defaults:
+        if defaults['url'] is not None:
+            base_url = addslash(defaults['url']) + uset.name + '/'
 
     return UploadConfiguration(
         destination, base_url, allow_extensions, deny_extensions)
 
 
-def configure_uploads(app, upload_sets):
+def configure_uploads(app: Flask, upload_sets: Iterable['UploadSet']) -> None:
     """
     Call this after the app has been configured. It will go through all the
     upload sets, get their configuration, and store the configuration on the
@@ -93,8 +108,10 @@ def configure_uploads(app, upload_sets):
     if not hasattr(app, 'upload_set_config'):
         app.upload_set_config = {}
     set_config = app.upload_set_config
-    defaults = dict(dest=app.config.get('UPLOADS_DEFAULT_DEST'),
-                    url=app.config.get('UPLOADS_DEFAULT_URL'))
+    defaults = dict(
+        dest=app.config.get('UPLOADS_DEFAULT_DEST'),
+        url=app.config.get('UPLOADS_DEFAULT_URL')
+    )  # type: Dict[str, Optional[str]]
 
     for uset in upload_sets:
         config = config_for_set(uset, app, defaults)
@@ -119,17 +136,29 @@ class UploadConfiguration:
     :param deny: A list of extensions to deny, even if they are in the
                  `UploadSet` extensions list.
     """
-    def __init__(self, destination, base_url=None, allow=(), deny=()):
+    def __init__(
+            self,
+            destination: str,
+            base_url: Optional[str] = None,
+            allow: Union[Tuple[()], Tuple[str, ...]] = (),
+            deny: Union[Tuple[()], Tuple[str, ...]] = ()
+    ) -> None:
         self.destination = destination
         self.base_url = base_url
         self.allow = allow
         self.deny = deny
 
     @property
-    def tuple(self):
+    def tuple(self) -> Tuple[
+        str, Optional[str],
+        Union[Tuple[()], Tuple[str, ...]],
+        Union[Tuple[()], Tuple[str, ...]]
+    ]:
         return (self.destination, self.base_url, self.allow, self.deny)
 
-    def __eq__(self, other):
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, UploadConfiguration):
+            return NotImplemented
         return self.tuple == other.tuple
 
 
@@ -153,7 +182,12 @@ class UploadSet:
                          with the app, it should return the default upload
                          destination path for that app.
     """
-    def __init__(self, name='files', extensions=DEFAULTS, default_dest=None):
+    def __init__(
+        self,
+        name: str = 'files',
+        extensions: Iterable[str] = DEFAULTS,
+        default_dest: Optional[Callable[[Flask], str]] = None
+    ) -> None:
         if not name.isalnum():
             raise ValueError("Name must be alphanumeric (no underscores)")
         self.name = name
@@ -162,7 +196,7 @@ class UploadSet:
         self.default_dest = default_dest
 
     @property
-    def config(self):
+    def config(self) -> 'UploadConfiguration':
         """
         This gets the current configuration. By default, it looks up the
         current application and gets the configuration from there. But if you
@@ -174,11 +208,14 @@ class UploadSet:
         if self._config is not None:
             return self._config
         try:
-            return current_app.upload_set_config[self.name]
+            upload_configuration = (
+                current_app.upload_set_config[self.name]
+            )  # type: UploadConfiguration
+            return upload_configuration
         except AttributeError:
             raise RuntimeError("cannot access configuration outside request")
 
-    def url(self, filename):
+    def url(self, filename: str) -> str:
         """
         This function gets the URL a file uploaded to this set would be
         accessed at. It doesn't check whether said file exists.
@@ -192,7 +229,7 @@ class UploadSet:
         else:
             return base + filename
 
-    def path(self, filename, folder=None):
+    def path(self, filename: str, folder: Optional[str] = None) -> str:
         """
         This returns the absolute path of a file uploaded to this set. It
         doesn't actually check whether said file exists.
@@ -207,7 +244,7 @@ class UploadSet:
             target_folder = self.config.destination
         return os.path.join(target_folder, filename)
 
-    def file_allowed(self, storage, basename):
+    def file_allowed(self, storage: FileStorage, basename: str) -> bool:
         """This tells whether a file is allowed.
 
         It should return `True` if the given
@@ -222,7 +259,7 @@ class UploadSet:
         """
         return self.extension_allowed(extension(basename))
 
-    def extension_allowed(self, ext):
+    def extension_allowed(self, ext: str) -> bool:
         """
         This determines whether a specific extension is allowed. It is called
         by `file_allowed`, so if you override that but still want to check
@@ -233,10 +270,18 @@ class UploadSet:
         return ((ext in self.config.allow) or
                 (ext in self.extensions and ext not in self.config.deny))
 
-    def get_basename(self, filename):
-        return lowercase_ext(secure_filename(filename))
+    def get_basename(self, filename: str) -> str:
+        # `secure_filename` is already typed via typeshed
+        # cf https://github.com/python/typeshed/pull/4308
+        # but not yet available via `mypy` from PyPi
+        return lowercase_ext(secure_filename(filename))  # type: ignore
 
-    def save(self, storage, folder=None, name=None):
+    def save(
+        self,
+        storage: FileStorage,
+        folder: Optional[str] = None,
+        name: Optional[str] = None
+    ) -> str:
         """This saves the `storage` into this upload set.
 
         A `storage` is a `werkzeug.datastructures.FileStorage`.
@@ -260,7 +305,8 @@ class UploadSet:
 
         if folder is None and name is not None and "/" in name:
             folder, name = os.path.split(name)
-
+        if storage.filename is None:
+            raise ValueError("Filename must not be empty!")
         basename = self.get_basename(storage.filename)
 
         if not self.file_allowed(storage, basename):
@@ -288,7 +334,7 @@ class UploadSet:
         else:
             return basename
 
-    def resolve_conflict(self, target_folder, basename):
+    def resolve_conflict(self, target_folder: str, basename: str) -> str:
         """
         If a file with the selected name already exists in the target folder,
         this method is called to resolve the conflict. It should return a new
@@ -314,7 +360,7 @@ uploads_mod = Blueprint('_uploads', __name__, url_prefix='/_uploads')
 
 
 @uploads_mod.route('/<setname>/<path:filename>')
-def uploaded_file(setname, filename):
+def uploaded_file(setname: UploadSet, filename: str) -> Any:
     config = current_app.upload_set_config.get(setname)
     if config is None:
         abort(404)

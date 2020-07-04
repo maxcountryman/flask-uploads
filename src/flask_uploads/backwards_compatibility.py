@@ -1,7 +1,10 @@
 import warnings
 
+from flask import Flask
 
-def patch_request_class(app, size=64 * 1024 * 1024):  # pragma: no cover
+
+def patch_request_class(
+        app: Flask, size: int = 64 * 1024 * 1024) -> None:  # pragma: no cover
     """Attention!
 
     This function is deprecated and due to removal in `Flask-Reuploaded 1.0`.

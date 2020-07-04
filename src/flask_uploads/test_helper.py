@@ -5,6 +5,10 @@ This means:
     - it has to be importable
     - it can't be moved in the tests directory
 """
+from typing import IO
+from typing import Any
+from typing import Optional
+
 from werkzeug.datastructures import FileStorage
 
 
@@ -26,25 +30,38 @@ class TestingFileStorage(FileStorage):
     :param headers: Multipart headers as a `werkzeug.Headers`. The default is
                     `None`.
     """
-    def __init__(self, stream=None, filename=None, name=None,
-                 content_type='application/octet-stream', content_length=-1,
-                 headers=None):
+    def __init__(
+        self,
+        stream: Optional[IO[bytes]] = None,
+        filename: Optional[str] = None,
+        name: Optional[str] = None,
+        content_type: str = 'application/octet-stream',
+        content_length: int = -1,
+        headers: Optional[Any] = None
+    ) -> None:
         FileStorage.__init__(
-            self, stream, filename, name=name,
-            content_type=content_type, content_length=content_length,
+            self,
+            stream,
+            filename,
+            name=name,
+            content_type=content_type,
+            content_length=content_length,
             headers=None
         )
-        self.saved = None
+        self.saved = None  # type: Optional[str]
 
-    def save(self, dst, buffer_size=16384):
-        """
-        This marks the file as saved by setting the `saved` attribute to the
-        name of the file it was saved to.
+    def save(self, dst: str, buffer_size: int = 16384) -> None:  # type: ignore
+        """This marks the file as saved.
 
-        :param dst: The file to save to.
+        The `saved` attribute gets set to the destination.
+
+        Although unused, `buffer_size` is required to stay compatible
+        with the signature of `werkzeug.datastructures.FileStorage.save`.
+
+        :param dst: The destination file name or path.
         :param buffer_size: Ignored.
         """
         if isinstance(dst, str):
             self.saved = dst
         else:
-            self.saved = dst.name
+            raise RuntimeError("dst currently has to be a `str`")

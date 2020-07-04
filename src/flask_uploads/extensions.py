@@ -1,5 +1,6 @@
 """Extension presets and extension configuration."""
 import os
+from typing import Iterable
 
 # This contains archive and compression formats (.gz, .bz2, .zip, .tar,
 # .tgz, .txz, and .7z).
@@ -67,7 +68,7 @@ class All:
     This type can be used to allow all extensions. There is a predefined
     instance named `ALL`.
     """
-    def __contains__(self, item):
+    def __contains__(self, item: str) -> bool:
         return True
 
 
@@ -88,14 +89,14 @@ class AllExcept:
 
         AllExcept(SCRIPTS + EXECUTABLES)
     """
-    def __init__(self, items):
+    def __init__(self, items: Iterable[str]) -> None:
         self.items = items
 
-    def __contains__(self, item):
+    def __contains__(self, item: str) -> bool:
         return item not in self.items
 
 
-def extension(filename):
+def extension(filename: str) -> str:
     ext = os.path.splitext(filename)[1]
     if ext.startswith('.'):
         # os.path.splitext retains . separator
@@ -103,7 +104,7 @@ def extension(filename):
     return ext
 
 
-def lowercase_ext(filename):
+def lowercase_ext(filename: str) -> str:
     """
     This is a helper used by UploadSet.save to provide lowercase extensions for
     all processed files, to compare with configured extensions in the same

@@ -21,15 +21,15 @@ from .extensions import ARCHIVES
 from .extensions import SOURCE
 from .extensions import EXECUTABLES
 from .extensions import DEFAULTS
+from .extensions import extension
+from .extensions import lowercase_ext
+
 
 from .flask_uploads import UploadConfiguration
 from .flask_uploads import UploadSet
 from .flask_uploads import addslash
 from .flask_uploads import configure_uploads
-from .flask_uploads import extension
-from .flask_uploads import lowercase_ext
 from .flask_uploads import config_for_set
-
 from .test_helper import TestingFileStorage
 
 __all__ = [
