@@ -3,13 +3,13 @@ include *.py
 include *.rst
 include *.yaml
 include tox.ini
-recursive-include docs *.bat
-recursive-include docs *.conf
-recursive-include docs *.css_t
-recursive-include docs *.html
-recursive-include docs *.py
-recursive-include docs *.rst
-recursive-include docs Makefile
+recursive-include tests *.py
+
+include docs/Makefile
+include docs/conf.py
+include docs/index.rst
+include docs/make.bat
+
 recursive-include example *.css
 recursive-include example *.html
 recursive-include example *.py

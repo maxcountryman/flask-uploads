@@ -58,6 +58,7 @@ configure_uploads(app, uploaded_photos)
 
 manager = CouchDBManager()
 
+
 def unique_id():
     return hex(uuid.uuid4().time)[2:-1]
 
@@ -134,7 +135,7 @@ def login():
         username = request.form.get('username')
         password = request.form.get('password')
         if (username == app.config['ADMIN_USERNAME'] and
-            password == app.config['ADMIN_PASSWORD']):
+                password == app.config['ADMIN_PASSWORD']):
             session['logged_in'] = True
             flash("Successfully logged in")
             return to_index()
