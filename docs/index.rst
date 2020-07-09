@@ -163,6 +163,15 @@ random filename::
     # If name ends with a dot, the file's extension will be appended to the end.
 
 
+Unique Filenames
+================
+Flask-uploads currently updates your filename if the file already exists.
+The default implementation splits the name and extension and adds a 
+suffix to the name consisting of an underscore and a number, and tries 
+that until it finds one that doesn't exist. 
+
+
+
 API Documentation
 =================
 This documentation is generated directly from the source code.
