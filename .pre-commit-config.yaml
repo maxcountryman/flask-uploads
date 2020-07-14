@@ -25,3 +25,8 @@ repos:
     hooks:
     - id: pyupgrade
       args: [--py36-plus]
+
+  - repo: https://github.com/mgedmin/check-python-versions
+    rev: "0.15.0"
+    hooks:
+    - id: check-python-versions
