@@ -76,17 +76,23 @@ Getting started
 
 create an UploadSet
 
+.. code-block:: python
+
     from flask_uploads import IMAGES
 
     photos = UploadSet("photos", IMAGES)
 
 configure your Flask app and this extension
 
+.. code-block:: python
+
     app.config["UPLOADED_PHOTOS_DEST"] = "static/img"
     app.config["SECRET_KEY"] = os.urandom(24)
     configure_uploads(app, photos)
 
 use `photos` in your view function
+
+.. code-block:: python
 
     photos.save(request.files['photo'])
 
@@ -107,6 +113,8 @@ Complete example Application
 
 Application code
 ~~~~~~~~~~~~~~~~
+
+.. code-block:: python
 
     import os
 
@@ -133,6 +141,8 @@ Application code
 
 HTML code for `upload.html`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: html
 
     <!doctype html>
     <html lang=en>
