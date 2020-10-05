@@ -13,6 +13,7 @@ from flask_uploads import ALL
 from flask_uploads import AllExcept
 from flask_uploads import TestingFileStorage
 from flask_uploads import UploadConfiguration
+from flask_uploads import UploadNotAllowed
 from flask_uploads import UploadSet
 from flask_uploads import addslash
 from flask_uploads import configure_uploads
@@ -256,6 +257,14 @@ class TestSaving:
 
         with pytest.raises(TypeError):
             uset.save(non_storage)
+
+    def test_file_not_allowed(self):
+        """Raise UploadNotAllowed for not allowed file extensions."""
+        uset = UploadSet('files', ('png'))
+        uset._config = Config('/uploads')
+        testing_filestorage = TestingFileStorage(filename='picture.gif')
+        with pytest.raises(UploadNotAllowed):
+            uset.save(testing_filestorage)
 
 
 class TestConflictResolution:

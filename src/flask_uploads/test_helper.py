@@ -64,4 +64,6 @@ class TestingFileStorage(FileStorage):
         if isinstance(dst, str):
             self.saved = dst
         else:
-            raise RuntimeError("dst currently has to be a `str`")
+            # currently kept for compatibility with Flask-Uploads
+            raise RuntimeError(
+                "dst currently has to be a `str`")  # pragma: no cover
