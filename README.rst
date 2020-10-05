@@ -54,9 +54,13 @@ That's all!
 
 So, if you use `pip` to install your packages, instead of ...
 
+.. code-block:: bash
+
     $ pip install `Flask-Uploads`  # don't do this! package is broken
 
 ... just do ...
+
+.. code-block:: bash
 
     $ pip install `Flask-Reuploaded`
 
@@ -67,6 +71,8 @@ This means you do not have to change a single line of code.
 
 Installation
 ------------
+
+.. code-block:: bash
 
     $ pip install Flask-Reuploaded
 
