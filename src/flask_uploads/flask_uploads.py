@@ -1,10 +1,13 @@
 """
-flaskext.uploads
+Flask-Reuploaded
 ================
-This module provides upload support for Flask. The basic pattern is to set up
-an `UploadSet` object and upload your files to it.
+This module provides upload support for Flask.
+
+The basic pattern is to set up an `UploadSet` object
+and upload your files to it.
 
 :copyright: 2010 Matthew "LeafStorm" Frazier
+:copyright: 2019-2020 Jürgen Gmach <juergen.gmach@googlemail.com>
 :license:   MIT/X11, see LICENSE for details
 """
 import os

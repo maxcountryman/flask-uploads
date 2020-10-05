@@ -1,5 +1,6 @@
 """
 :copyright: 2010 Matthew "LeafStorm" Frazier
+:copyright: 2019-2020 Jürgen Gmach <juergen.gmach@googlemail.com>
 :license:   MIT/X11, see LICENSE for details
 """
 
