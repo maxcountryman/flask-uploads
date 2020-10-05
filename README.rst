@@ -12,6 +12,13 @@
     :alt: PyPI - Python Version
     :target: https://pypi.org/project/Flask-Reuploaded/
 
+.. image:: https://requires.io/github/jugmac00/flask-reuploaded/requirements.svg?branch=master
+    :target: https://requires.io/github/jugmac00/flask-reuploaded/requirements/?branch=master
+    :alt: Requirements Status
+
+.. image:: https://img.shields.io/pypi/l/hibpcli
+    :target: https://github.com/jugmac00/flask-reuploaded/blob/master/LICENSE
+
 
 Flask-Reuploaded
 ================
