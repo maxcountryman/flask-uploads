@@ -15,6 +15,10 @@ unreleased
 - add flake8-bugbear
 - add short contribution guide
   (`#6 <https://github.com/jugmac00/flask-reuploaded/issues/6>`_)
+- add `getting started`
+  (`#59 <https://github.com/jugmac00/flask-reuploaded/issues/59>`_)
+- delete broken example and add minimal example to README
+  (`#15 <https://github.com/jugmac00/flask-reuploaded/issues/15>`_)
 
 
 0.3.2
