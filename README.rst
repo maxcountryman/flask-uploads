@@ -71,12 +71,92 @@ Installation
     $ pip install Flask-Reuploaded
 
 
+Getting started
+---------------
+
+create an UploadSet
+
+    from flask_uploads import IMAGES
+
+    photos = UploadSet("photos", IMAGES)
+
+configure your Flask app and this extension
+
+    app.config["UPLOADED_PHOTOS_DEST"] = "static/img"
+    app.config["SECRET_KEY"] = os.urandom(24)
+    configure_uploads(app, photos)
+
+use `photos` in your view function
+
+    photos.save(request.files['photo'])
+
+See below for a complete example.
+
+
 Documentation
 -------------
 
 The documentation can be found at...
 
 https://flask-reuploaded.readthedocs.io/en/latest/
+
+
+Complete example Application
+----------------------------
+
+
+Application code
+~~~~~~~~~~~~~~~~
+
+    import os
+
+    from flask import Flask, flash, render_template, request
+    # please note the import from `flask_uploads` - not `flask_reuploaded`!!
+    # this is done on purpose to stay compatible with `Flask-Uploads`
+    from flask_uploads import IMAGES, UploadSet, configure_uploads
+
+    app = Flask(__name__)
+    photos = UploadSet("photos", IMAGES)
+    app.config["UPLOADED_PHOTOS_DEST"] = "static/img"
+    app.config["SECRET_KEY"] = os.urandom(24)
+    configure_uploads(app, photos)
+
+
+    @app.route("/", methods=['GET', 'POST'])
+    def upload():
+        if request.method == 'POST' and 'photo' in request.files:
+            photos.save(request.files['photo'])
+            flash("Photo saved successfully.")
+            return render_template('upload.html')
+        return render_template('upload.html')
+
+
+HTML code for `upload.html`
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    <!doctype html>
+    <html lang=en>
+    <head>
+        <meta charset=utf-8>
+        <title>Flask-Reuploaded Example</title>
+    </head>
+    <body>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+    <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
+        <input type=file name=photo>
+        <button type="submit">Submit</button>
+    </form>
+    </body>
+    </html>
 
 
 Contributing

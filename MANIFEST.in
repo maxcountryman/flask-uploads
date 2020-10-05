@@ -10,6 +10,3 @@ include docs/conf.py
 include docs/index.rst
 include docs/make.bat
 
-recursive-include example *.css
-recursive-include example *.html
-recursive-include example *.py
