@@ -25,3 +25,8 @@ repos:
     rev: "0.15.0"
     hooks:
     - id: check-python-versions
+
+  - repo: https://github.com/mgedmin/check-manifest
+    rev: "0.39"
+    hooks:
+    - id: check-manifest
