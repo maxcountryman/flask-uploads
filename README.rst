@@ -113,7 +113,7 @@ The documentation can be found at...
 https://flask-reuploaded.readthedocs.io/en/latest/
 
 
-Complete example Application
+Minimal example application
 ----------------------------
 
 
