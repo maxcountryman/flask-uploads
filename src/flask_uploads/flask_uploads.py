@@ -277,7 +277,7 @@ class UploadSet:
         # `secure_filename` is already typed via typeshed
         # cf https://github.com/python/typeshed/pull/4308
         # but not yet available via `mypy` from PyPi
-        return lowercase_ext(secure_filename(filename))  # type: ignore
+        return lowercase_ext(secure_filename(filename))
 
     def save(
         self,
