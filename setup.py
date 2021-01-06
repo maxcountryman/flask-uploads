@@ -44,6 +44,12 @@ setup(
     zip_safe=False,
     platforms="any",
     install_requires=["Flask>=1.0.4"],
+    extras_require={
+        "test": [
+            "pytest",
+            "pytest-cov",
+        ],
+    },
     python_requires=">= 3.6",
     classifiers=[
         "Development Status :: 4 - Beta",

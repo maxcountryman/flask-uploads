@@ -20,6 +20,7 @@ unreleased
 - delete broken example and add minimal example to README
   (`#15 <https://github.com/jugmac00/flask-reuploaded/issues/15>`_)
 - add support for Python 3.9
+- use gh actions instead of Travis CI
 
 
 0.3.2
