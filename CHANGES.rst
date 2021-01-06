@@ -1,6 +1,11 @@
 Changelog
 =========
 
+unreleased
+----------
+
+- No changes yet.
+
 0.4.0
 -----
 - add type annotations
