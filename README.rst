@@ -167,7 +167,7 @@ HTML code for `upload.html`
         {% endfor %}
         </ul>
         {% endif %}
-    {% endwith %}
+        {% endwith %}
 
     <form method=POST enctype=multipart/form-data action="{{ url_for('upload') }}">
         <input type=file name=photo>
