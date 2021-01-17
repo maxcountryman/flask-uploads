@@ -119,8 +119,8 @@ Minimal example application
 ----------------------------
 
 
-Application code
-~~~~~~~~~~~~~~~~
+Application code, e.g. main.py
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: python
 
@@ -175,6 +175,37 @@ HTML code for `upload.html`
     </form>
     </body>
     </html>
+
+
+project structure
+~~~~~~~~~~~~~~~~~
+
+The project structure would look as following...
+
+.. code-block:: bash
+
+    ❯ tree -I "__*|h*"
+    .
+    ├── main.py
+    ├── static
+    │   └── img
+    └── templates
+        └── upload.html
+
+
+run example application
+~~~~~~~~~~~~~~~~~~~~~~~
+
+In order to run the application,
+you have to enter the following commands...
+
+.. code-block:: bash
+
+    ❯ export FLASK_APP=main.py
+
+    ❯ flask run
+
+Then point your browser to `http://127.0.0.1:5000/`.
 
 
 Contributing
