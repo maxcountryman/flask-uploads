@@ -41,6 +41,6 @@ jobs:
         if: "matrix.python-version == '3.9'"
         run: |
           pip install coveralls
-          coveralls
+          coveralls --service=github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
