@@ -177,7 +177,7 @@ HTML code for `upload.html`
     </html>
 
 
-project structure
+Project structure
 ~~~~~~~~~~~~~~~~~
 
 The project structure would look as following...
@@ -193,8 +193,8 @@ The project structure would look as following...
         └── upload.html
 
 
-run example application
-~~~~~~~~~~~~~~~~~~~~~~~
+Running the example application
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In order to run the application,
 you have to enter the following commands...
