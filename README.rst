@@ -49,6 +49,44 @@ Goals
 Migration guide from `Flask-Uploads`
 ------------------------------------
 
+Incompatibilities between Flask-Reuploaded and Flask-Uploads
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Currently, there are no known incompatibilities.
+
+Just follow the `Uninstall and install` instructions below.
+
+Please note, that `Flask-Uploads`,
+and thus also `Flask-Reuploaded` has an inbuilt **autoserve** feature.
+
+This means that uploaded files are automatically served for viewing and downloading.
+
+e.g. if you configure an `Uploadset` with the name `photos`,
+and upload a picture called `snow.jpg`,
+the picture can be automatically accessed at e.g. `http://localhost:5000/_uploads/photos/snow.jpg`
+unless
+- you set `UPLOADED_PHOTOS_URL` to an empty string, ie `""`
+- you configure `UPLOADED_PHOTOS_URL` with a valid string
+(then the picture is served from there)
+- or you set `UPLOADS_AUTOSERVE` to `False`.
+
+The last option is new in `Flask-Reuploaded`.
+
+In order to stay compatible with `Flask-Uploads`,
+by default `UPLOADS_AUTOSERVE` is currently set to `True`,
+
+With `Flask-Reuploaded` version 1.0.0,
+`UPLOADS_AUTOSERVE` will default to `False`,
+as this feature is/was undocumented,
+surprising,
+and actually it could lead to unwanted data disclosure.
+
+Setting it explicitly to `False` is recommended.
+
+
+Uninstall and install
+~~~~~~~~~~~~~~~~~~~~~
+
 If you have used `Flask-Uploads` and want to migrate to `Flask-Reuploaded`,
 you only have to install `Flask-Reuploaded` instead of `Flask-Uploads`.
 

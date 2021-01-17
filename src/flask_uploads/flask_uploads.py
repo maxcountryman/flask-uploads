@@ -120,9 +120,11 @@ def configure_uploads(app: Flask, upload_sets: Iterable['UploadSet']) -> None:
         config = config_for_set(uset, app, defaults)
         set_config[uset.name] = config
 
-    should_serve = any(s.base_url is None for s in set_config.values())
-    if '_uploads' not in app.blueprints and should_serve:
-        app.register_blueprint(uploads_mod)
+    autoserve = app.config.get("UPLOADS_AUTOSERVE", True)
+    if autoserve:
+        should_serve = any(s.base_url is None for s in set_config.values())
+        if '_uploads' not in app.blueprints and should_serve:
+            app.register_blueprint(uploads_mod)
 
 
 class UploadConfiguration:
