@@ -1,5 +1,6 @@
 import os
 
+import pytest
 from flask import Flask
 from flask_uploads import ALL
 from flask_uploads import IMAGES
@@ -32,7 +33,13 @@ def test_autoserve_works_without_configuration(tmp_path):
     configure_uploads(app, photos)
 
     with app.test_client() as client:
-        response = client.get("/_uploads/photos/snow.jpg")
+        with pytest.warns(None) as record:
+            response = client.get("/_uploads/photos/snow.jpg")
+
+    # autoserve will default to false in the upcoming 1.0.0 release
+    # make sure the warning about the upcoming change is issued
+    assert len(record) == 1
+    assert "You are using the undocumented AUTOSERVE feature." in str(record[0].message)  # noqa: E501
 
     assert response.status == "200 OK"
 
@@ -56,6 +63,7 @@ def test_autoserve_does_not_work_for_non_existing_upload_set(tmp_path):
     app = Flask(__name__)
     files = UploadSet("files", ALL)
     app.config["UPLOADED_FILES_DEST"] = str(image_directory)
+    app.config["UPLOADS_AUTOSERVE"] = False
     app.config["SECRET_KEY"] = os.urandom(24)
     configure_uploads(app, files)
 

@@ -366,6 +366,14 @@ uploads_mod = Blueprint('_uploads', __name__, url_prefix='/_uploads')
 
 @uploads_mod.route('/<setname>/<path:filename>')
 def uploaded_file(setname: UploadSet, filename: str) -> Any:
+    if not current_app.config.get("UPLOADS_AUTOSERVE"):
+        import warnings
+        warnings.warn(
+            "\nYou are using the undocumented AUTOSERVE feature.\n"
+            "With `Flask-Reuploaded` 1.0.0 you have to enable it explicitly.\n"
+            "To do so, you have to configure your app as following:\n"
+            "`app.config['UPLOADS_AUTOSERVE'] = 'True'`"
+        )
     config = current_app.upload_set_config.get(setname)
     if config is None:
         abort(404)
