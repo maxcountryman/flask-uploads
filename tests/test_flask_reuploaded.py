@@ -197,6 +197,13 @@ class TestSaving:
         os.makedirs = self.old_makedirs
         del self.old_makedirs
 
+    def test_filestorage_requires_name(self):
+        uset = UploadSet('files')
+        # no name passed in here
+        tfs = TestingFileStorage()
+        with pytest.raises(ValueError):
+            uset.save(tfs)
+
     def test_saved(self):
         uset = UploadSet('files')
         uset._config = Config('/uploads')
