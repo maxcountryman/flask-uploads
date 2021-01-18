@@ -54,19 +54,20 @@ Incompatibilities between Flask-Reuploaded and Flask-Uploads
 
 Currently, there are no known incompatibilities.
 
-Just follow the `Uninstall and install` instructions below.
+Just follow the **Uninstall and install** instructions below.
 
 Please note, that `Flask-Uploads`,
 and thus also `Flask-Reuploaded` has an builtin **autoserve** feature.
 
 This means that uploaded files are automatically served for viewing and downloading.
 
-e.g. if you configure an `Uploadset` with the name `photos`,
+e.g. if you configure an `UploadSet` with the name `photos`,
 and upload a picture called `snow.jpg`,
-the picture can be automatically accessed at e.g. `http://localhost:5000/_uploads/photos/snow.jpg`
+the picture can be automatically accessed at e.g.
+http://localhost:5000/_uploads/photos/snow.jpg
 unless
 
-- you set `UPLOADED_PHOTOS_URL` to an empty string, ie `""`
+- you set `UPLOADED_PHOTOS_URL` to an empty string
 - you configure `UPLOADED_PHOTOS_URL` with a valid string (then the picture is served from there)
 - or you set `UPLOADS_AUTOSERVE` to `False`.
 
