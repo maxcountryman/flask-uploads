@@ -65,9 +65,9 @@ e.g. if you configure an `Uploadset` with the name `photos`,
 and upload a picture called `snow.jpg`,
 the picture can be automatically accessed at e.g. `http://localhost:5000/_uploads/photos/snow.jpg`
 unless
+
 - you set `UPLOADED_PHOTOS_URL` to an empty string, ie `""`
-- you configure `UPLOADED_PHOTOS_URL` with a valid string
-(then the picture is served from there)
+- you configure `UPLOADED_PHOTOS_URL` with a valid string (then the picture is served from there)
 - or you set `UPLOADS_AUTOSERVE` to `False`.
 
 The last option is new in `Flask-Reuploaded`.
