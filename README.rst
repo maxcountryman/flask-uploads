@@ -57,7 +57,7 @@ Currently, there are no known incompatibilities.
 Just follow the `Uninstall and install` instructions below.
 
 Please note, that `Flask-Uploads`,
-and thus also `Flask-Reuploaded` has an inbuilt **autoserve** feature.
+and thus also `Flask-Reuploaded` has an builtin **autoserve** feature.
 
 This means that uploaded files are automatically served for viewing and downloading.
 
