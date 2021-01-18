@@ -4,7 +4,10 @@ Changelog
 unreleased
 ----------
 
-- No changes yet.
+- improve documentation of example app
+- document surprising `autoserve` feature
+- issue a warning when using `autoserve` without explicit configuration
+
 
 0.4.0
 -----
