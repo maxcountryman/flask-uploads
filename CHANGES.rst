@@ -1,9 +1,8 @@
 Changelog
 =========
 
-unreleased
-----------
-
+0.5.0
+-----
 - improve documentation of example app
 - document surprising `autoserve` feature
 - issue a warning when using `autoserve` without explicit configuration
