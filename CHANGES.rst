@@ -3,7 +3,7 @@ Changelog
 
 unreleased
 ----------
-- nothing yet
+- improve coverage
 
 
 0.5.0

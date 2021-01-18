@@ -17,6 +17,7 @@ from flask_uploads import UploadConfiguration
 from flask_uploads import UploadNotAllowed
 from flask_uploads import UploadSet
 from flask_uploads import addslash
+from flask_uploads import config_for_set
 from flask_uploads import configure_uploads
 from flask_uploads import extension
 from flask_uploads import lowercase_ext
@@ -355,3 +356,11 @@ class TestPathsAndURLs:
             url = uset.url('foo.txt')
             assert url == 'http://localhost:5001/foo.txt'
         assert '_uploads' not in app.blueprints
+
+
+def test_configure_for_set_throws_runtimeerror():
+    """when there is no destination for an UploadSet"""
+    upload_set = UploadSet("files")
+    app = Flask(__name__)
+    with pytest.raises(RuntimeError):
+        config_for_set(upload_set, app)
