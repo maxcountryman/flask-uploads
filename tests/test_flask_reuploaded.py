@@ -187,6 +187,24 @@ class TestPreconditions:
         for ext, result in extpairs:
             assert uset.extension_allowed(ext) is result
 
+    def test_upload_config_outside_request(self):
+        """UploadSets must be used within Flask's request context."""
+        # when constructing this test case, I noticed that the raised exception
+        # text seems to be not wrong
+        # the only way to trigger an AttributeError is when
+        # configure_uploads is not called at configuration stage
+        # this has nothing to do with the request context
+        app = Flask(__name__)
+        files = UploadSet("files", ALL)
+
+        # the following line has to be left out to trigger the AttributeError,
+        # which then gets re-raised as a RuntimeError
+        # configure_uploads(app, files)
+
+        with app.test_request_context(environ_base={'HTTP_NAME': 'value'}):
+            with pytest.raises(RuntimeError):
+                files.config
+
 
 class TestSaving:
     def setup(self):

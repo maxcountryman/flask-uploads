@@ -3,7 +3,7 @@ Changelog
 
 unreleased
 ----------
-- improve coverage
+- raise test coverage to 100%
 
 
 0.5.0
