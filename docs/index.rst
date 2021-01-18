@@ -63,6 +63,17 @@ serve the uploads.
 By default Flask doesn't put any limits on the size of the uploaded
 data. To limit the max upload size, you can use Flask's `MAX_CONTENT_LENGTH`.
 
+`UPLOADS_AUTOSERVE`
+    This turns `AUTOSERVE` on or off via `True` or `False`.
+    `AUTOSERVE` enables automatic viewing/downloading of uploaded files.
+    When the name of the `UploadSet` is `photos` and the name of the uploaded
+    file is `snow.jpg`, the file is available via
+    `http://localhost:5000/_uploads/photos/snow.jpg`.
+    In order to stay compatible with `Flask-Uploads`,
+    for `Flask-Reuploaded` < 1.0.0 `UPLOADS_AUTOSERVE` defaults to `True`.
+    In version `1.0.0` `UPLOADS_AUTOSERVE` will default to `False`,
+    as this `feature` is a bit of a surprise, as it was undocumented for a long time.
+
 
 Upload Sets
 ===========
