@@ -176,6 +176,10 @@ class TestPreconditions:
             tfs = TestingFileStorage(filename=name)
             assert uset.file_allowed(tfs, name) is result
 
+    def test_underscores_are_not_allowed_for_names_in_upload_sets(self):
+        with pytest.raises(ValueError):
+            UploadSet("__not__allowed__")
+
     def test_default_extensions(self):
         uset = UploadSet('files')
         uset._config = Config('/uploads')
