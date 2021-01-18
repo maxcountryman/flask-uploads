@@ -63,7 +63,7 @@ def test_autoserve_does_not_work_for_non_existing_upload_set(tmp_path):
     app = Flask(__name__)
     files = UploadSet("files", ALL)
     app.config["UPLOADED_FILES_DEST"] = str(image_directory)
-    app.config["UPLOADS_AUTOSERVE"] = False
+    app.config["UPLOADS_AUTOSERVE"] = True
     app.config["SECRET_KEY"] = os.urandom(24)
     configure_uploads(app, files)
 
