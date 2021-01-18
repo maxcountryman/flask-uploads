@@ -1,6 +1,11 @@
 Changelog
 =========
 
+unreleased
+----------
+- nothing yet
+
+
 0.5.0
 -----
 - improve documentation of example app
