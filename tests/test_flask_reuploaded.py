@@ -81,6 +81,11 @@ class TestConfiguration:
         configure_uploads(self.app, sets)
         return self.app.upload_set_config
 
+    def test_compare_upload_configurations(self):
+        """UploadConfigurations are only comparable to UploadConfigurations"""
+        rv = Config("/var/files", "http://localhost").__eq__("abc")
+        assert rv is NotImplemented
+
     def test_manual(self):
         f, p = UploadSet('files'), UploadSet('photos')
         setconfig = self.configure(
