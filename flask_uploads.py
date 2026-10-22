@@ -36,11 +36,11 @@ TEXT = ('txt',)
 #: This contains various office document formats (.rtf, .odf, .ods, .gnumeric,
 #: .abw, .doc, .docx, .xls, .xlsx and .pdf). Note that the macro-enabled versions
 #: of Microsoft Office 2007 files are not included.
-DOCUMENTS = tuple('rtf odf ods gnumeric abw doc docx xls xlsx pdf'.split())
+DOCUMENTS = tuple('pdf rtf odf ods gnumeric abw doc docx xls xlsx pdf'.split())
 
 #: This contains basic image types that are viewable from most browsers (.jpg,
 #: .jpe, .jpeg, .png, .gif, .svg, .bmp and .webp).
-IMAGES = tuple('jpg jpe jpeg png gif svg bmp webp'.split())
+IMAGES = tuple('JPG jpg jpe jpeg png gif svg bmp webp'.split())
 
 #: This contains audio file types (.wav, .mp3, .aac, .ogg, .oga, and .flac).
 AUDIO = tuple('wav mp3 aac ogg oga flac'.split())
